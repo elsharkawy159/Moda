@@ -1,0 +1,62 @@
+.btn-outline-moda {
+  --mdb-btn-hover-bg: var(--main-color);
+  --mdb-btn-box-shadow: 0 4px 5px -4px var(--main-color);
+  --mdb-btn-focus-bg: var(--secondary-color);
+  --mdb-btn-active-bg: var(--secondary-color);
+}
+
+.btn-moda {
+  --mdb-btn-bg: var(--main-color);
+  --mdb-btn-hover-bg: var(--secondary-color);
+  --mdb-btn-box-shadow: 0 0px 1px 0px var(--main-color);
+  --mdb-btn-hover-box-shadow: 0 0px 8px 0px var(--main-color);
+  --mdb-btn-focus-bg: var(--secondary-color);
+  --mdb-btn-active-bg: var(--secondary-color);
+}
+
+.btn-outline-moda,
+.btn-moda {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-moda {
+  background-color: transparent;
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+  border-radius: 4px;
+}
+
+.btn-moda {
+  background-color: var(--main-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.btn-outline-moda:hover,
+.btn-moda:hover {
+  background-color: var(--mdb-btn-hover-bg);
+  box-shadow: var(--mdb-btn-hover-box-shadow);
+    color: #efefef;
+}
+
+.btn-outline-moda:focus,
+.btn-moda:focus {
+  background-color: var(--mdb-btn-focus-bg);
+  transform: scale(0.99);
+  outline: none;
+}
+
+.btn-outline-moda:active,
+.btn-moda:active {
+  background-color: var(--mdb-btn-active-bg);
+  transform: scale(0.99);
+  outline: none;
+}
