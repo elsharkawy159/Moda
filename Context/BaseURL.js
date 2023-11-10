@@ -1,3 +1,3 @@
-const BaseURL = "http://localhost:5000";
+const BaseURL = "https://moda-back-end.vercel.app";
 
 export default BaseURL;

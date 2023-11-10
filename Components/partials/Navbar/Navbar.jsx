@@ -82,3 +82,4 @@ const NavList = ({ children, href }) => {
   );
 };
 export default Navbar;
+  
