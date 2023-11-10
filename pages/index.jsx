@@ -14,7 +14,7 @@ import CallToAction from "../Components/partials/CallToAction.jsx";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { productData } = useProduct();
+  const { productData } = useProduct(); 
   console.log(productData.products);
   return (
     <>
@@ -87,7 +87,7 @@ export default function Home() {
       <div className="container border-bottom">
         <BagsAndAccessories />
       </div>
-      <CallToAction/>
+      <CallToAction />
     </>
   );
 }

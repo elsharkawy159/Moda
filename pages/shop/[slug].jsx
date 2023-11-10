@@ -170,10 +170,6 @@ const Product = () => {
                   placeholder="1"
                 />
               </div>
-              <HookUsage/>
-              <HookUsage>
-                
-              </HookUsage>
               <div className="colors fw-semibold my-2 ">
                 Colors:
                 {product?.colors?.map((color) => {
