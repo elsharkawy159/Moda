@@ -56,7 +56,7 @@ const Navbar = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto mb-2 mb-lg-0">
-              <NavList href={"/"}>HOM0E</NavList>
+              <NavList href={"/"}>HOME</NavList>
               <NavList href={"/about"}>ABOUT</NavList>
               <NavList href={"/shop"}>SHOP</NavList>
               <NavList href={"/contact"}>CONTACT US</NavList>
