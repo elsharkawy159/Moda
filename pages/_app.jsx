@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
 import "../public/Components.style/style.css";
-
+import { ChakraProvider } from "@chakra-ui/react";
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
 
@@ -36,28 +36,30 @@ export default function App({ Component, pageProps }) {
   });
   return (
     <>
-      <AuthProvider>
-        <BrandProvider>
-          <CartProvider>
-            <CategoryProvider>
-              <CouponProvider>
-                <OrderProvider>
-                  <ProductProvider>
-                    <ReviewProvider>
-                      <SubcategoryProvider>
-                        <Layout>
-                          {progress && <TopBarProgress />}
-                          <Component {...pageProps} />
-                        </Layout>
-                      </SubcategoryProvider>
-                    </ReviewProvider>
-                  </ProductProvider>
-                </OrderProvider>
-              </CouponProvider>
-            </CategoryProvider>
-          </CartProvider>
-        </BrandProvider>
-      </AuthProvider>
+      <ChakraProvider>
+        <AuthProvider>
+          <BrandProvider>
+            <CartProvider>
+              <CategoryProvider>
+                <CouponProvider>
+                  <OrderProvider>
+                    <ProductProvider>
+                      <ReviewProvider>
+                        <SubcategoryProvider>
+                          <Layout>
+                            {progress && <TopBarProgress />}
+                            <Component {...pageProps} />
+                          </Layout>
+                        </SubcategoryProvider>
+                      </ReviewProvider>
+                    </ProductProvider>
+                  </OrderProvider>
+                </CouponProvider>
+              </CategoryProvider>
+            </CartProvider>
+          </BrandProvider>
+        </AuthProvider>
+      </ChakraProvider>
     </>
   );
 }

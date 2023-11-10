@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import Magnifier from "react-magnifier";
 import Link from "next/link.js";
 import formatKey from "../../Components/features/Formatting.jsx";
+import HookUsage from "../../Components/features/HookUsage.jsx";
 
 const Product = () => {
   const { getProductDetails, productDetailsData } = useProduct();
@@ -169,6 +170,7 @@ const Product = () => {
                   placeholder="1"
                 />
               </div>
+              <HookUsage/>
               <div className="colors fw-semibold my-2 ">
                 Colors:
                 {product?.colors?.map((color) => {
