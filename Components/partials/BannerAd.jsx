@@ -1,5 +1,4 @@
 import React from "react";
-import { Fade } from "react-reveal";
 
 const BannerAd = ({
   height,
@@ -9,15 +8,8 @@ const BannerAd = ({
   sub,
   position,
   starts,
-  revealDir,
 }) => {
   return (
-    <Fade
-      bottom={revealDir === "bottom"}
-      top={revealDir === "top"}
-      left={revealDir === "left"}
-      right={revealDir === "right"}
-    >
       <div className={`${col}`}>
         <div
           className={`bannerAd d-flex align-items-${position} p-4`}
@@ -49,7 +41,6 @@ const BannerAd = ({
           <div className="layer"></div>
         </div>
       </div>
-    </Fade>
   );
 };
 

@@ -1,6 +1,5 @@
 import React from "react";
 import Slider from "react-slick";
-import { Fade } from "react-reveal";
 
 const MainSlider = () => {
   const settings = {
@@ -33,15 +32,13 @@ const MainSlider = () => {
             alt="Slider"
             className="w-100 border-0"
           />
-          <Fade bottom>
-            <div className="slider-content text-center">
-              <p className="text-gradient">NEW COLLECTION</p>
-              <h1>Men's Coats & Jackets</h1>
-              <button className="btn btn-moda fs-6 m-0 fw-bold">
-                Discover Now
-              </button>
-            </div>
-          </Fade>
+          <div className="slider-content text-center">
+            <p className="text-gradient">NEW COLLECTION</p>
+            <h1>Men's Coats & Jackets</h1>
+            <button className="btn btn-moda fs-6 m-0 fw-bold">
+              Discover Now
+            </button>
+          </div>
         </div>
         <div className="position-relative">
           <img
@@ -49,15 +46,13 @@ const MainSlider = () => {
             alt="Slider"
             className="w-100 border-0"
           />
-          <Fade>
-            <div className="slider-content text-center">
-              <p className="text-gradient">NEW COLLECTION</p>
-              <h1>
-                Men's & Women's <span className="d-block">T-Shirts</span>
-              </h1>
-              <button className="btn btn-moda fs-6 m-0">Discover Now</button>
-            </div>
-          </Fade>
+          <div className="slider-content text-center">
+            <p className="text-gradient">NEW COLLECTION</p>
+            <h1>
+              Men's & Women's <span className="d-block">T-Shirts</span>
+            </h1>
+            <button className="btn btn-moda fs-6 m-0">Discover Now</button>
+          </div>
         </div>
         <div className="position-relative">
           <img
@@ -65,13 +60,11 @@ const MainSlider = () => {
             alt="Slider"
             className="w-100 border-0"
           />
-          <Fade>
-            <div className="slider-content text-center">
-              <p className="text-gradient">DEALS AND PROMOTIONS</p>
-              <h1>Sneakers & Athletic Shoes</h1>
-              <button className="btn btn-moda fs-6 m-0">Discover Now</button>
-            </div>
-          </Fade>
+          <div className="slider-content text-center">
+            <p className="text-gradient">DEALS AND PROMOTIONS</p>
+            <h1>Sneakers & Athletic Shoes</h1>
+            <button className="btn btn-moda fs-6 m-0">Discover Now</button>
+          </div>
         </div>
       </Slider>
     </div>

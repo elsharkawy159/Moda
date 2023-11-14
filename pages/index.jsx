@@ -38,7 +38,6 @@ export default function Home() {
             position={"end"}
             starts={"From $19.99"}
             color={"text-dark"}
-            revealDir={"left"}
           />
           <div className="col-md-6">
             <BannerAd
@@ -50,7 +49,6 @@ export default function Home() {
               position={"center"}
               starts={"From $19.99"}
               color={"text-dark"}
-              revealDir={"top"}
             />
             <BannerAd
               height={14}
@@ -60,7 +58,6 @@ export default function Home() {
               sub={"Special Discounts"}
               position={"center"}
               starts={"From $19.99"}
-              revealDir={"bottom"}
             />
           </div>
           <BannerAd
@@ -71,7 +68,6 @@ export default function Home() {
             sub={"On All Orders"}
             position={"top"}
             starts={"From $19.99"}
-            revealDir={"right"}
           />
         </div>
       </div>

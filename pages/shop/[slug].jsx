@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useProduct } from "../../Context/ProductContext";
 import Slider from "react-slick";
-import Magnifier from "react-magnifier";
 import Link from "next/link.js";
 import formatKey from "../../Components/features/Formatting.jsx";
-import HookUsage from "../../Components/features/HookUsage.jsx";
 
 const Product = () => {
   const { getProductDetails, productDetailsData } = useProduct();
@@ -54,14 +52,14 @@ const Product = () => {
                       ...productDetailsData?.product?.subImages,
                     ].map((image, index) => (
                       <div key={index}>
-                        <Magnifier
+                        {/* <Magnifier
                           src={image?.secure_url}
                           width={"100%"}
                           height={"100%"}
                           mgWidth={2050}
                           mgHeight={2050}
                           zoomFactor={0.1}
-                        />
+                        /> */}
                       </div>
                     ))}
                   </Slider>
