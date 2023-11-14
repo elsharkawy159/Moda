@@ -9,16 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
     "framer-motion": "^10.16.4",
     "next": "13.4.18",
-    "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-magnifier": "^3.0.4",
-    "react-reveal": "^1.2.2",
     "react-router-dom": "^6.16.0",
     "react-slick": "^0.29.0",
     "react-topbar-progress-indicator": "^4.1.1",
