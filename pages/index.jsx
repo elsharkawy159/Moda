@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import ServicesSlider from "../Components/partials/Sliders/ServicesSlider.jsx";
 import MainSlider from "../Components/partials/Sliders/MainSlider.jsx";
 import CategoriesSlider from "../Components/partials/Sliders/CategoriesSlider.jsx";
-import BannerAd from "../Components/partials/BannerAd.jsx";
 import BrandSlider from "../Components/partials/Sliders/BrandsSlider.jsx";
 import { useProduct } from "../Context/ProductContext.js";
 import TrendingNow from "../Components/partials/ProductSliders/TrendingNow.jsx";
