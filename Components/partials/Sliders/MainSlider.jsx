@@ -28,7 +28,7 @@ const MainSlider = () => {
       <Slider {...settings}>
         <div className="position-relative">
           <img
-            src="/img/mainSlider/slide-2.jpg"
+            src="./img/mainSlider/slide-2.jpg"
             alt="Slider"
             className="w-100 border-0"
           />
