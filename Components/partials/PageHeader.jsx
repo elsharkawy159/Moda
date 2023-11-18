@@ -3,12 +3,7 @@ const PageHeader = ({ title, subTitle, bg }) => {
     <div
       className="page-header text-center py-5"
       style={{
-        backgroundImage: `url(${
-          bg ||
-          "/img/WhiteBG.jpg" ||
-          "../../public/img/whiteBG.jpg" ||
-          "img/WhiteBG.jpg"
-        })`,
+        backgroundImage: `url(${bg || "/img/WhiteBG.jpg"})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
