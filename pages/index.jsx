@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import ServicesSlider from "../Components/partials/Sliders/ServicesSlider.jsx";
 import MainSlider from "../Components/partials/Sliders/MainSlider.jsx";
+import CategoriesSlider from "../Components/partials/Sliders/CategoriesSlider.jsx";
 import BannerAd from "../Components/partials/BannerAd.jsx";
 import BrandSlider from "../Components/partials/Sliders/BrandsSlider.jsx";
 import { useProduct } from "../Context/ProductContext.js";
@@ -23,19 +24,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BannerAd
-        height={29}
-        col={"col-lg-3 col-md-6 col-12"}
-        bg={"/img/mainSlider/slide-5.jpg"}
-        title={"New Arrivals"}
-        sub={"WaterProof"}
-        position={"end"}
-        starts={"From $19.99"}
-        color={"text-dark"}
-      />
       <ServicesSlider />
       <MainSlider />
-      {/* <CategoriesSlider /> */}
+      <CategoriesSlider />
       <div className="container pt-5">
         <div className="row g-3">
           <BannerAd
