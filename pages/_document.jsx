@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script.js";
 
 export default function Document() {
   return (
@@ -18,8 +19,10 @@ export default function Document() {
         />
       </Head>
       <body>
+        <script src="/js/mdb.min.js" />
+
         <Main />
-        <script src="/js/mdb.min.js"></script>
+
         <NextScript />
       </body>
     </Html>

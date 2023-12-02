@@ -26,7 +26,9 @@ export function ProductProvider({ children }) {
     try {
       setIsLoading(true);
 
-      const { data } = await axios.get(`${BaseURL}/product/?${query}`);
+      const { data } = await axios.get(
+        `${BaseURL}/product/?${query}`
+      );
       setProductData(data);
       // console.log(data);
     } catch (error) {
