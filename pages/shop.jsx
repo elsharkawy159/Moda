@@ -31,9 +31,9 @@ const Shop = () => {
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
     setFilters({ ...filters, [name]: value });
-    console.log(name, value);
-    console.log(filters);
-    handleFilter(filters);
+    console.log({ "Name is": name, "Value Is": value });
+    // console.log(filters);
+    // handleFilter(filters);
   };
 
   const handleReset = () => {
