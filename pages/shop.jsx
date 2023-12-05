@@ -134,7 +134,7 @@ const Shop = () => {
 
               <button
                 className="btn btn-moda w-100 mt-3 rounded-0 rounded-bottom"
-                onClick={handleFilter}
+                // onClick={}
               >
                 Apply
               </button>
