@@ -28,10 +28,11 @@ const Shop = () => {
     console.log({ filters });
   };
 
-  const handleFilterChange = (event) => {
-    const { name, value } = event.target;
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
     console.log({ "Name is": name, "Value Is": value });
+    console.log(e.target);
     // console.log(filters);
     // handleFilter(filters);
   };
@@ -61,7 +62,7 @@ const Shop = () => {
               <div className="my-2">
                 <label htmlFor="search">Search</label>
                 <input
-                  onChange={handleFilterChange}
+                  onChange={(e) => handleFilterChange(e)}
                   type="search"
                   id="search"
                   className="form-control"
