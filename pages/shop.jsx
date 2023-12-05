@@ -34,7 +34,7 @@ const Shop = () => {
     console.log({ "Name is": name, "Value Is": value });
     console.log(e.target);
     // console.log(filters);
-    // handleFilter(filters);
+    handleFilter(filters);
   };
 
   const handleReset = () => {
@@ -65,6 +65,7 @@ const Shop = () => {
                   onChange={(e) => handleFilterChange(e)}
                   type="search"
                   id="search"
+                  name="searchkey"
                   className="form-control"
                 />
               </div>
