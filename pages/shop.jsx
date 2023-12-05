@@ -130,7 +130,7 @@ const Shop = () => {
                   />
 
                   <p className="text-sm text-muted mt-n2">
-                    Max: {filters.maxPrice} EGP
+                    Max: {filters.priceRange.max} EGP
                   </p>
                 </div>
               </div>
