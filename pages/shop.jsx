@@ -21,20 +21,21 @@ const Shop = () => {
     rating: 0,
   });
 
-  const handleFilter = (filters) => {
-    getProducts(
-      `searchKey=${filters.searchKey}&price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
-    );
-    console.log(filters);
-  };
-
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
     // console.log({ "Name is": name, "Value Is": value });
     // console.log(e.target);
     console.log(filters);
-    handleFilter(filters);
+    handleFilter();
+  };
+
+  const handleFilter = (filters) => {
+    getProducts(
+      `searchKey=${filters.searchKey}`
+      // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
+    );
+    console.log(filters);
   };
 
   const handleReset = () => {
