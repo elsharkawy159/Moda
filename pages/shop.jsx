@@ -28,6 +28,8 @@ const Shop = () => {
     // console.log(e.target);
     getProducts(`${name}=${value}`);
     console.log(filters);
+    console.log("Name: ", name);
+    console.log("Value: ", value);
     // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
   };
 
