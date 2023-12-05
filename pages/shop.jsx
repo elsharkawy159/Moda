@@ -66,7 +66,7 @@ const Shop = () => {
                   onChange={(e) => handleFilterChange(e)}
                   type="search"
                   id="search"
-                  name="searchkey"
+                  name="searchKey"
                   className="form-control"
                 />
               </div>
