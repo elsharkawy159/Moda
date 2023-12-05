@@ -10,17 +10,30 @@ const Shop = () => {
 
   const [filters, setFilters] = useState({
     searchKey: "",
-    minPrice: 1,
-    maxPrice: 5000,
     category: "",
     subcategory: "",
+    priceRange: { min: 1, max: 1000 },
+    color: "",
+    size: "",
+    brand: "",
+    sale: false,
+    new: false,
+    rating: 0,
   });
 
   const handleFilter = (filters) => {
     getProducts(
-      `searchKey=${filters.searchKey}&price[$gt]=${filters.minPrice}&price[$lt]=${filters.maxPrice}`
+      `searchKey=${filters.searchKey}&price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
     );
     console.log({ filters });
+  };
+
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    setFilters({ ...filters, [name]: value });
+    console.log(name, value);
+    console.log(filters);
+    handleFilter(filters);
   };
 
   const handleReset = () => {
@@ -48,7 +61,7 @@ const Shop = () => {
               <div className="my-2">
                 <label htmlFor="search">Search</label>
                 <input
-                  onChange={(e) => getProducts(`searchKey=${e.target.value}`)}
+                  onChange={handleFilterChange}
                   type="search"
                   id="search"
                   className="form-control"
@@ -72,12 +85,7 @@ const Shop = () => {
               {/* Subcategory dropdown */}
               <div className="my-2">
                 <label htmlFor="">Subcategory</label>
-                <select
-                  className="form-select"
-                  onChange={(e) =>
-                    setFilters({ ...filters, subcategory: e.target.value })
-                  }
-                >
+                <select className="form-select" onChange={handleFilterChange}>
                   <option value="">Select Subcategory</option>
                   {/* Populate options dynamically */}
                 </select>
@@ -93,14 +101,12 @@ const Shop = () => {
                     class="form-range"
                     id="customRange1"
                     min={1}
-                    max={5000}
-                    value={filters.minPrice}
-                    onChange={(e) =>
-                      setFilters({ ...filters, minPrice: e.target.value })
-                    }
+                    max={filters.priceRange.max}
+                    value={filters.priceRange.min}
+                    onChange={handleFilterChange}
                   />
                   <p className="text-sm text-muted mt-n2">
-                    Min: {filters.minPrice} EGP
+                    Min: {filters.priceRange.min} EGP
                   </p>
                 </div>
                 <div class="range" data-mdb-range-init>
@@ -108,13 +114,20 @@ const Shop = () => {
                     type="range"
                     class="form-range"
                     id="customRange1"
-                    min={1}
+                    min={filters.priceRange.min}
                     max={5000}
-                    value={filters.maxPrice}
+                    value={filters.priceRange.max}
                     onChange={(e) =>
-                      setFilters({ ...filters, maxPrice: e.target.value })
+                      setFilters({
+                        ...filters,
+                        priceRange: {
+                          ...filters.priceRange,
+                          max: e.target.value,
+                        },
+                      })
                     }
                   />
+
                   <p className="text-sm text-muted mt-n2">
                     Max: {filters.maxPrice} EGP
                   </p>
