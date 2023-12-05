@@ -27,7 +27,7 @@ const Shop = () => {
     // console.log({ "Name is": name, "Value Is": value });
     // console.log(e.target);
     console.log(filters);
-    handleFilter();
+    handleFilter(filters);
   };
 
   const handleFilter = (filters) => {
