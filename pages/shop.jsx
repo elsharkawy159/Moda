@@ -28,14 +28,12 @@ const Shop = () => {
     // console.log(e.target);
     console.log(filters);
     handleFilter(filters);
-  };
 
-  const handleFilter = (filters) => {
-    getProducts(
-      `searchKey=${filters.searchKey}`
-      // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
-    );
-    console.log(filters);
+     getProducts(
+       `searchKey=${filters.searchKey}`
+       // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
+     );
+     
   };
 
   const handleReset = () => {
