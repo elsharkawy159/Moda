@@ -26,11 +26,11 @@ const Shop = () => {
     setFilters({ ...filters, [name]: value });
     // console.log({ "Name is": name, "Value Is": value });
     // console.log(e.target);
-    console.log(filters);
     getProducts(
       `searchKey=${filters.searchKey}`
       // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
     );
+    console.log(filters);
   };
 
   const handleReset = () => {
@@ -56,7 +56,7 @@ const Shop = () => {
             <div className="side py-4 px-2">
               <h4>Filter</h4>
               <div className="my-2">
-                <label htmlFor="search">Search</label>
+                <label htmlFor="search">Searchh</label>
                 <input
                   onChange={(e) => handleFilterChange(e)}
                   type="search"
