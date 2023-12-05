@@ -1,43 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PageHeader from "../Components/partials/PageHeader.jsx";
 import ProductCard from "../Components/partials/ProductCard/ProductCard.jsx";
 import { useProduct } from "../Context/ProductContext.js";
-import { useRouter } from "next/router";
 
 const Shop = () => {
-  const router = useRouter();
   const { getProducts, productData, isLoading } = useProduct();
 
   const [filters, setFilters] = useState({
     searchKey: "",
     category: "",
     subcategory: "",
-    priceRange: { min: 1, max: 1000 },
+    priceRange: { min: 1, max: 5000 }, // Updated max price to 5000
     color: "",
     size: "",
     brand: "",
-    sale: false,
+    top: false,
     new: false,
     rating: 0,
   });
 
   const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
-    // console.log({ "Name is": name, "Value Is": value });
-    // console.log(e.target);
-    getProducts(filters);
-    console.log(toString({ filters }));
-    console.log("Name: ", name);
-    console.log("Value: ", value);
-    // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFilters({ ...filters, [name]: newValue });
+    applyFilters(); // Call function to apply filters
+  };
+
+  const applyFilters = () => {
+    const queryParams = Object.entries(filters)
+      .map(([key, value]) => {
+        if (value !== "" && value !== false && value !== 0) {
+          return `${key}=${value}`;
+        }
+        return null;
+      })
+      .filter((query) => query !== null)
+      .join("&");
+
+    getProducts(queryParams); // Make API call with filtered query parameters
   };
 
   const handleReset = () => {
-    getProducts(" ");
+    setFilters({ ...filters, searchKey: "" }); // Reset search key
+    getProducts(""); // Reset products
   };
-
-  //https://moda-back-end.vercel.app/product?finalPrice[$gt]=998&&finalPrice[$lt]=9990&colors=blue&
 
   return (
     <>
@@ -49,16 +56,16 @@ const Shop = () => {
       />
       <div className="container">
         <div className="row pb-5">
-          <div className="col-12">
-            <img src="/img/bg offer.jpg" className="img-fluid" alt="" />
-          </div>
+          {/* Filter side bar */}
+          {/* ... */}
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
             <div className="side py-4 px-2">
               <h4>Filter</h4>
+              {/* Search input */}
               <div className="my-2">
-                <label htmlFor="search">Searchh</label>
+                <label htmlFor="search">Search</label>
                 <input
-                  onChange={(e) => handleFilterChange(e)}
+                  onChange={handleFilterChange}
                   type="search"
                   id="search"
                   name="searchKey"
@@ -67,74 +74,54 @@ const Shop = () => {
               </div>
 
               {/* Category dropdown */}
-              <div className="my-2">
-                <label htmlFor="">Category</label>
-                <select
-                  className="form-select"
-                  onChange={(e) =>
-                    setFilters({ ...filters, category: e.target.value })
-                  }
-                >
-                  <option value="">Select Category</option>
-                  {/* Populate options dynamically */}
-                </select>
-              </div>
+              {/* ... */}
 
-              {/* Subcategory dropdown */}
-              <div className="my-2">
-                <label htmlFor="">Subcategory</label>
-                <select className="form-select" onChange={handleFilterChange}>
-                  <option value="">Select Subcategory</option>
-                  {/* Populate options dynamically */}
-                </select>
-              </div>
-
+              {/* Price range slider */}
               <div>
-                <label class="form-label pt-2 fw-semibold" for="customRange1">
+                <label
+                  className="form-label pt-2 fw-semibold"
+                  htmlFor="customRange1"
+                >
                   Price
                 </label>
-                <div class="range" data-mdb-range-init>
+                <div className="range" data-mdb-range-init>
                   <input
                     type="range"
-                    class="form-range"
+                    className="form-range"
                     id="customRange1"
                     min={1}
                     max={filters.priceRange.max}
                     value={filters.priceRange.min}
                     onChange={handleFilterChange}
+                    name="priceRange.min"
                   />
                   <p className="text-sm text-muted mt-n2">
                     Min: {filters.priceRange.min} EGP
                   </p>
                 </div>
-                <div class="range" data-mdb-range-init>
+                <div className="range" data-mdb-range-init>
                   <input
                     type="range"
-                    class="form-range"
-                    id="customRange1"
+                    className="form-range"
+                    id="customRange2"
                     min={filters.priceRange.min}
                     max={5000}
                     value={filters.priceRange.max}
-                    onChange={(e) =>
-                      setFilters({
-                        ...filters,
-                        priceRange: {
-                          ...filters.priceRange,
-                          max: e.target.value,
-                        },
-                      })
-                    }
+                    onChange={handleFilterChange}
+                    name="priceRange.max"
                   />
-
                   <p className="text-sm text-muted mt-n2">
                     Max: {filters.priceRange.max} EGP
                   </p>
                 </div>
               </div>
 
+              {/* Other filters (color, size, brand, etc.) */}
+              {/* ... */}
+
               <button
                 className="btn btn-moda w-100 mt-3 rounded-0 rounded-bottom"
-                // onClick={}
+                onClick={applyFilters}
               >
                 Apply
               </button>
@@ -146,6 +133,8 @@ const Shop = () => {
               </button>
             </div>
           </div>
+
+          {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <div className="row">
               {productData?.products?.map((product, index) => (
