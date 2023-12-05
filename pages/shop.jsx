@@ -25,15 +25,15 @@ const Shop = () => {
     getProducts(
       `searchKey=${filters.searchKey}&price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
     );
-    console.log({ filters });
+    console.log(filters);
   };
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
-    console.log({ "Name is": name, "Value Is": value });
-    console.log(e.target);
-    // console.log(filters);
+    // console.log({ "Name is": name, "Value Is": value });
+    // console.log(e.target);
+    console.log(filters);
     handleFilter(filters);
   };
 
