@@ -26,11 +26,9 @@ const Shop = () => {
     setFilters({ ...filters, [name]: value });
     // console.log({ "Name is": name, "Value Is": value });
     // console.log(e.target);
-    getProducts(
-      `searchKey=${filters.searchKey}`
-      // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
-    );
+    getProducts(`${name}=${value}`);
     console.log(filters);
+    // &price[$gt]=${filters.priceRange.min}&price[$lt]=${filters.priceRange.max}`
   };
 
   const handleReset = () => {
