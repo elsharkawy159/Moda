@@ -136,13 +136,11 @@ const Shop = () => {
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <div className="row">
               <ul>
-                {filters.map((key, value) => {
-                  return (
-                    <li>
-                      {key}: {value}
-                    </li>
-                  );
-                })}
+                {Object.entries(filters).map(([key, value]) => (
+                  <li key={key}>
+                    {key}: {JSON.stringify(value)}
+                  </li>
+                ))}
               </ul>
               {productData?.products?.map((product, index) => (
                 <div className="col-md-4" key={index}>
