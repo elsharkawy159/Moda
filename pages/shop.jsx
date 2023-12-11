@@ -145,7 +145,7 @@ const Shop = () => {
 
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <div className="row justify-content-center align-items-center">
+            <div className="row justify-content-center align-items-center h-100">
               <ul>
                 {Object.entries(filters).map(([key, value]) => (
                   <li key={key}>
