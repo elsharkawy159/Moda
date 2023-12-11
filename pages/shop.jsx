@@ -18,6 +18,7 @@ const Shop = () => {
     new: "",
     rating: "",
   });
+  const [filterHeader, setFilterHeader] = useState("");
 
   const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
@@ -64,12 +65,13 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
+                    name="Under 500"
                     id="flexRadioDefault1"
                     value={"&price[$lt]=500"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
+                      filterHeader({ ...filterHeader, price: e.target.name });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
@@ -80,12 +82,16 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
+                    name="500 To 1000"
                     id="flexRadioDefault2"
                     value={"price[$gt]=500&price[$lt]=1000"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
+                      filterHeader({
+                        ...filterHeader,
+                        price: e.target.name,
+                      });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
@@ -96,11 +102,16 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
+                    name="1000 To 5000"
                     id="flexRadioDefault3"
+                    value={"price[$gt]=1000&price[$lt]=5000"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
+                      filterHeader({
+                        ...filterHeader,
+                        price: e.target.name,
+                      });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
@@ -111,11 +122,16 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
+                    name="+5000"
                     id="flexRadioDefault4"
+                    value={"price[$gt]=5000"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
+                      filterHeader({
+                        ...filterHeader,
+                        price: e.target.name,
+                      });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault4">
@@ -145,7 +161,7 @@ const Shop = () => {
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <div className="row justify-content-center align-items-center">
               <ul>
-                {Object.entries(filters).map(([key, value]) => (
+                {Object.entries(filterHeader).map(([key, value]) => (
                   <li key={key}>
                     {key}: {JSON.stringify(value)}
                   </li>
