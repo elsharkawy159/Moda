@@ -58,8 +58,12 @@ const Shop = () => {
 
   return (
     <>
-      {/* Existing JSX code for PageHeader */}
-      {/* ... */}
+      <PageHeader
+        title={"Shop"}
+        subTitle={
+          "Offering a world-class customer experience, MODA is the top choice for online shopping in Egypt."
+        }
+      />
       <div className="container">
         <div className="row pb-5">
           {/* Existing JSX code for filter side */}
