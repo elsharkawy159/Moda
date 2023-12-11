@@ -10,7 +10,7 @@ const Shop = () => {
     searchKey: "",
     category: "",
     subcategory: "",
-    priceRange: { min: 1, max: 5000 }, // Updated max price to 5000
+    price: "", // Updated max price to 5000
     color: "",
     size: "",
     brand: "",
@@ -82,6 +82,11 @@ const Shop = () => {
                     type="radio"
                     name="flexRadioDefault"
                     id="flexRadioDefault2"
+                    value={"price[$gt]=500&price[$lt]=1000"}
+                    onChange={(e) => {
+                      setFilters({ ...filters, price: e.target.value });
+                      applyFilters(filters);
+                    }}
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     500EGP To 1000EGP
