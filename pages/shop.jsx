@@ -65,7 +65,7 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="Under 500"
+                    name="flexRadioDefault"
                     id="flexRadioDefault1"
                     value={"&price[$lt]=500"}
                     onChange={(e) => {
@@ -82,7 +82,7 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="500 To 1000"
+                    name="flexRadioDefault"
                     id="flexRadioDefault2"
                     value={"price[$gt]=500&price[$lt]=1000"}
                     onChange={(e) => {
@@ -102,7 +102,7 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="1000 To 5000"
+                    name="flexRadioDefault"
                     id="flexRadioDefault3"
                     value={"price[$gt]=1000&price[$lt]=5000"}
                     onChange={(e) => {
@@ -122,7 +122,8 @@ const Shop = () => {
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="+5000"
+                    name="flexRadioDefault"
+                    label="+5000"
                     id="flexRadioDefault4"
                     value={"price[$gt]=5000"}
                     onChange={(e) => {
@@ -130,7 +131,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e.target.name,
+                        price: e.target.label,
                       });
                     }}
                   />
