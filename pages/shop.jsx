@@ -71,7 +71,7 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      filterHeader({ ...filterHeader, price: e.target.name });
+                      filterHeader({ ...filterHeader, price: e });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
@@ -90,7 +90,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e.target.name,
+                        price: e,
                       });
                     }}
                   />
@@ -110,7 +110,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e.target.name,
+                        price: e,
                       });
                     }}
                   />
@@ -131,7 +131,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e.target,
+                        price: e,
                       });
                     }}
                   >
