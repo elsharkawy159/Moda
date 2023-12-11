@@ -139,14 +139,14 @@ const Shop = () => {
 
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <ul className="d-flex">
+            <ul className="d-flex text-decoration-none">
               {Object.entries(filters).map(([key, value]) => (
-                <li className="mx-1" key={key}>
-                  {key}: {JSON.stringify(value)}
+                <li className="mx-1 bg-main rounded-4" key={key}>
+                  {JSON.stringify(value)}
                 </li>
               ))}
             </ul>
-            <div className="row justify-content-center text-center h-100">
+            <div className="row justify-items-center text-center h-100">
               {productData.productsCount === 0 ? (
                 <h3>No Products Found</h3>
               ) : (

@@ -41,6 +41,9 @@ h4 {
 .text-main {
   color: var(--main-color);
 }
+.bg-main {
+  background-color: var(--main-color);
+}
 p {
   font-family: "Open Sans", sans-serif;
   color: var(--dark50-color);
