@@ -14,9 +14,9 @@ const Shop = () => {
     color: "",
     size: "",
     brand: "",
-    top: false,
-    new: false,
-    rating: 0,
+    top: "",
+    new: "",
+    rating: "",
   });
 
   const applyFilters = (filters) => {
@@ -34,13 +34,13 @@ const Shop = () => {
       searchKey: "",
       category: "",
       subcategory: "",
-      price: "",
+      price: "", // Updated max price to 5000
       color: "",
       size: "",
       brand: "",
-      top: false,
-      new: false,
-      rating: 0,
+      top: "",
+      new: "",
+      rating: "",
     }); //Reset
     getProducts(""); // Reset products
   };
@@ -68,12 +68,11 @@ const Shop = () => {
                     id="flexRadioDefault1"
                     value={"&price[$lt]=500"}
                     onChange={(e) => {
-                      setFilters({ ...filters, price: e.target.value });
-                      applyFilters(filters);
+                      applyFilters({ ...filters, price: e.target.value });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
-                    Under 500EGP
+                    Under 500
                   </label>
                 </div>
                 <div class="form-check">
@@ -84,12 +83,11 @@ const Shop = () => {
                     id="flexRadioDefault2"
                     value={"price[$gt]=500&price[$lt]=1000"}
                     onChange={(e) => {
-                      setFilters({ ...filters, price: e.target.value });
-                      applyFilters(filters);
+                      applyFilters({ ...filters, price: e.target.value });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
-                    500EGP To 1000EGP
+                    500 To 1000
                   </label>
                 </div>
                 <div class="form-check">
@@ -100,7 +98,7 @@ const Shop = () => {
                     id="flexRadioDefault3"
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
-                    1000EGP To 5000EGP
+                    1000 To 5000
                   </label>
                 </div>
                 <div class="form-check">
@@ -111,7 +109,7 @@ const Shop = () => {
                     id="flexRadioDefault4"
                   />
                   <label class="form-check-label" for="flexRadioDefault4">
-                    +5000EGP
+                    +5000
                   </label>
                 </div>
               </div>
