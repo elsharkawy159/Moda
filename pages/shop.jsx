@@ -19,15 +19,7 @@ const Shop = () => {
     rating: 0,
   });
 
-  const handleFilterChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-
-    setFilters({ ...filters, [name]: newValue });
-    applyFilters(); // Call function to apply filters
-  };
-
-  const applyFilters = () => {
+  const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
       .map(([key, value]) => {
         if (value !== "" && value !== false && value !== 0) {
@@ -37,12 +29,23 @@ const Shop = () => {
       })
       .filter((query) => query !== null)
       .join("&");
-
+    console.log(queryParams);
     getProducts(queryParams); // Make API call with filtered query parameters
   };
 
   const handleReset = () => {
-    setFilters({ ...filters, searchKey: "" }); // Reset search key
+    setFilters({
+      searchKey: "",
+      category: "",
+      subcategory: "",
+      price: "",
+      color: "",
+      size: "",
+      brand: "",
+      top: false,
+      new: false,
+      rating: 0,
+    }); //Reset
     getProducts(""); // Reset products
   };
 
@@ -56,64 +59,61 @@ const Shop = () => {
       />
       <div className="container">
         <div className="row pb-5">
-          {/* Filter side bar */}
-          {/* ... */}
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
             <div className="side py-4 px-2">
               <h4>Filter</h4>
-              {/* Search input */}
-              <div className="my-2">
-                <label htmlFor="search">Search</label>
-                <input
-                  onChange={handleFilterChange}
-                  type="search"
-                  id="search"
-                  name="searchKey"
-                  className="form-control"
-                />
-              </div>
-
-              {/* Category dropdown */}
-              {/* ... */}
-
-              {/* Price range slider */}
               <div>
-                <label
-                  className="form-label pt-2 fw-semibold"
-                  htmlFor="customRange1"
-                >
-                  Price
-                </label>
-                <div className="range" data-mdb-range-init>
+                <label className="form-label pt-2 fw-semibold">Price</label>
+                <div class="form-check">
                   <input
-                    type="range"
-                    className="form-range"
-                    id="customRange1"
-                    min={1}
-                    max={filters.priceRange.max}
-                    onChange={handleFilterChange}
-                    name="priceRange.min"
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value={"&price[$lt]=500"}
+                    checked={(e) => {
+                      setFilters({ ...filters, price: e.target.value });
+                      applyFilters(filters);
+                    }}
                   />
-                  <p className="text-sm text-muted mt-n2">
-                    Min: {filters.priceRange.min} EGP
-                  </p>
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Under 500EGP
+                  </label>
                 </div>
-                <div className="range" data-mdb-range-init>
+                <div class="form-check">
                   <input
-                    type="range"
-                    className="form-range"
-                    id="customRange2"
-                    min={filters.priceRange.min}
-                    max={5000}
-                    onChange={handleFilterChange}
-                    name="priceRange.max"
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
                   />
-                  <p className="text-sm text-muted mt-n2">
-                    Max: {filters.priceRange.max} EGP
-                  </p>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    500EGP To 1000EGP
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault3"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    1000EGP To 5000EGP
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault4"
+                  />
+                  <label class="form-check-label" for="flexRadioDefault4">
+                    +5000EGP
+                  </label>
                 </div>
               </div>
-
               {/* Other filters (color, size, brand, etc.) */}
               {/* ... */}
 
@@ -135,6 +135,15 @@ const Shop = () => {
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <div className="row">
+              <ul>
+                {filters.map((key, value) => {
+                  return (
+                    <li>
+                      {key}: {value}
+                    </li>
+                  );
+                })}
+              </ul>
               {productData?.products?.map((product, index) => (
                 <div className="col-md-4" key={index}>
                   <ProductCard product={product} isLoading={isLoading} />

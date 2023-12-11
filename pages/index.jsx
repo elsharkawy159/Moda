@@ -83,7 +83,6 @@ export default function Home() {
       <div className="container border-bottom">
         <BagsAndAccessories />
       </div>
-      <CallToAction />
     </>
   );
 }
