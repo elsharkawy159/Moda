@@ -103,7 +103,7 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      filterHeader({
+                      setFilterHeader({
                         ...filterHeader,
                         price: e.target,
                       });
@@ -124,7 +124,7 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      filterHeader({
+                      setFilterHeader({
                         ...filterHeader,
                         price: e,
                       });
