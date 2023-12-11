@@ -69,6 +69,7 @@ const Shop = () => {
                     value={"&price[$lt]=500"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
@@ -84,6 +85,7 @@ const Shop = () => {
                     value={"price[$gt]=500&price[$lt]=1000"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
@@ -96,6 +98,10 @@ const Shop = () => {
                     type="radio"
                     name="flexRadioDefault"
                     id="flexRadioDefault3"
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
                     1000 To 5000
@@ -107,6 +113,10 @@ const Shop = () => {
                     type="radio"
                     name="flexRadioDefault"
                     id="flexRadioDefault4"
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
                   />
                   <label class="form-check-label" for="flexRadioDefault4">
                     +5000
