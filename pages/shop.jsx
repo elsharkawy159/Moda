@@ -3,13 +3,6 @@ import PageHeader from "../Components/partials/PageHeader.jsx";
 import ProductCard from "../Components/partials/ProductCard/ProductCard.jsx";
 import { useProduct } from "../Context/ProductContext.js";
 
-const priceRanges = [
-  { label: "Under 500", value: "&price[$lt]=500" },
-  { label: "500 To 1000", value: "price[$gt]=500&price[$lt]=1000" },
-  { label: "1000 To 5000", value: "price[$gt]=1000&price[$lt]=5000" },
-  { label: "+5000", value: "price[$gt]=5000" },
-];
-
 const Shop = () => {
   const { getProducts, productData, isLoading } = useProduct();
 
@@ -17,7 +10,7 @@ const Shop = () => {
     searchKey: "",
     category: "",
     subcategory: "",
-    price: "",
+    price: "", // Updated max price to 5000
     color: "",
     size: "",
     brand: "",
@@ -26,13 +19,14 @@ const Shop = () => {
     rating: "",
   });
 
-  const applyFilters = () => {
+  const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
-      .map(([key, value]) => value && `${key}=${value}`)
-      .filter(Boolean)
+      .map(([key, value]) => {
+        return `${value}`;
+      })
       .join("&");
-
-    getProducts(queryParams);
+    console.log(queryParams);
+    getProducts(queryParams); // Make API call with filtered query parameters
   };
 
   const handleReset = () => {
@@ -40,20 +34,15 @@ const Shop = () => {
       searchKey: "",
       category: "",
       subcategory: "",
-      price: "",
+      price: "", // Updated max price to 5000
       color: "",
       size: "",
       brand: "",
       top: "",
       new: "",
       rating: "",
-    });
-    getProducts("");
-  };
-
-  const handlePriceChange = (priceValue) => {
-    setFilters({ ...filters, price: priceValue });
-    applyFilters();
+    }); //Reset
+    getProducts(""); // Reset products
   };
 
   return (
@@ -66,35 +55,79 @@ const Shop = () => {
       />
       <div className="container">
         <div className="row pb-5">
-          {/* Existing JSX code for filter side */}
-          {/* ... */}
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
             <div className="side py-4 px-2">
               <h4>Filter</h4>
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
-                {priceRanges.map((range, index) => (
-                  <div key={index} className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id={`flexRadioDefault${index + 1}`}
-                      value={range.value}
-                      checked={filters.price === range.value}
-                      onChange={() => handlePriceChange(range.value)}
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor={`flexRadioDefault${index + 1}`}
-                    >
-                      {range.label}
-                    </label>
-                  </div>
-                ))}
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                    value={"&price[$lt]=500"}
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
+                  />
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Under 500
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                    value={"price[$gt]=500&price[$lt]=1000"}
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
+                  />
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    500 To 1000
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault3"
+                    value={"price[$gt]=1000&price[$lt]=5000"}
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
+                  />
+                  <label class="form-check-label" for="flexRadioDefault3">
+                    1000 To 5000
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault4"
+                    value={"price[$gt]=5000"}
+                    onChange={(e) => {
+                      applyFilters({ ...filters, price: e.target.value });
+                      setFilters({ ...filters, price: e.target.value });
+                    }}
+                  />
+                  <label class="form-check-label" for="flexRadioDefault4">
+                    +5000
+                  </label>
+                </div>
               </div>
               {/* Other filters (color, size, brand, etc.) */}
               {/* ... */}
+
               <button
                 className="btn btn-moda w-100 rounded-0 rounded-bottom"
                 onClick={handleReset}
@@ -103,8 +136,30 @@ const Shop = () => {
               </button>
             </div>
           </div>
-          {/* Existing JSX code for product display */}
-          {/* ... */}
+
+          {/* Product display */}
+          <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
+            <ul className="d-flex text-decoration-none">
+              {Object.entries(filters).map(([key, value]) =>
+                value === "" ? null : (
+                  <li className="mx-1 bg-main rounded-5" key={key}>
+                    {JSON.stringify(value)}
+                  </li>
+                )
+              )}
+            </ul>
+            <div className="row text-center">
+              {productData.productsCount === 0 ? (
+                <h3>No Products Found</h3>
+              ) : (
+                productData?.products?.map((product, index) => (
+                  <div className="col-md-4" key={index}>
+                    <ProductCard product={product} isLoading={isLoading} />
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </>
