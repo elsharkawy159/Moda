@@ -133,7 +133,7 @@ const Shop = () => {
 
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <div className="row">
+            <div className="row justify-content-center align-items-center">
               <ul>
                 {Object.entries(filters).map(([key, value]) => (
                   <li key={key}>
@@ -141,11 +141,15 @@ const Shop = () => {
                   </li>
                 ))}
               </ul>
-              {productData?.products?.map((product, index) => (
-                <div className="col-md-4" key={index}>
-                  <ProductCard product={product} isLoading={isLoading} />
-                </div>
-              ))}
+              {productData.productsCount === 0 ? (
+                <h3>No Products Found</h3>
+              ) : (
+                productData?.products?.map((product, index) => (
+                  <div className="col-md-4" key={index}>
+                    <ProductCard product={product} isLoading={isLoading} />
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
