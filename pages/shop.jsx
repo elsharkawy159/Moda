@@ -91,7 +91,6 @@ const Shop = () => {
                     id="customRange1"
                     min={1}
                     max={filters.priceRange.max}
-                    value={filters.priceRange.min}
                     onChange={handleFilterChange}
                     name="priceRange.min"
                   />
@@ -106,7 +105,6 @@ const Shop = () => {
                     id="customRange2"
                     min={filters.priceRange.min}
                     max={5000}
-                    value={filters.priceRange.max}
                     onChange={handleFilterChange}
                     name="priceRange.max"
                   />
