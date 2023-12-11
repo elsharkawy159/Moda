@@ -129,12 +129,6 @@ const Shop = () => {
               {/* ... */}
 
               <button
-                className="btn btn-moda w-100 mt-3 rounded-0 rounded-bottom"
-                onClick={applyFilters}
-              >
-                Apply
-              </button>
-              <button
                 className="btn btn-moda w-100 rounded-0 rounded-bottom"
                 onClick={handleReset}
               >
