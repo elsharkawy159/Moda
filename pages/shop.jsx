@@ -18,7 +18,6 @@ const Shop = () => {
     new: "",
     rating: "",
   });
-  const [filterHeader, setFilterHeader] = useState({ Filters: "" });
 
   const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
@@ -103,10 +102,6 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      setFilterHeader({
-                        ...filterHeader,
-                        price: e.target,
-                      });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
@@ -118,24 +113,16 @@ const Shop = () => {
                     class="form-check-input"
                     type="radio"
                     name="flexRadioDefault"
-                    label="+5000"
                     id="flexRadioDefault4"
                     value={"price[$gt]=5000"}
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      setFilterHeader({
-                        ...filterHeader,
-                        price: e,
-                      });
                     }}
-                  >
+                  />
+                  <label class="form-check-label" for="flexRadioDefault4">
                     +5000
-                  </input>
-
-                  {/* <label class="form-check-label" for="flexRadioDefault4">
-                    +5000
-                  </label> */}
+                  </label>
                 </div>
               </div>
               {/* Other filters (color, size, brand, etc.) */}
@@ -160,7 +147,7 @@ const Shop = () => {
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <div className="row justify-content-center align-items-center">
               <ul>
-                {Object.entries(filterHeader).map(([key, value]) => (
+                {Object.entries(filters).map(([key, value]) => (
                   <li key={key}>
                     {key}: {JSON.stringify(value)}
                   </li>
