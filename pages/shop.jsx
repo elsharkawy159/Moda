@@ -134,10 +134,12 @@ const Shop = () => {
                         price: e.target.label,
                       });
                     }}
-                  />
-                  <label class="form-check-label" for="flexRadioDefault4">
+                  >
                     +5000
-                  </label>
+                  </input>
+                  {/* <label class="form-check-label" for="flexRadioDefault4">
+                    +5000
+                  </label> */}
                 </div>
               </div>
               {/* Other filters (color, size, brand, etc.) */}
