@@ -18,7 +18,7 @@ const Shop = () => {
     new: "",
     rating: "",
   });
-  const [filterHeader, setFilterHeader] = useState("");
+  const [filterHeader, setFilterHeader] = useState({});
 
   const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
