@@ -131,7 +131,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e.target.label,
+                        price: e.target,
                       });
                     }}
                   >
