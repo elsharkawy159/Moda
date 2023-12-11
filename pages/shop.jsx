@@ -105,7 +105,7 @@ const Shop = () => {
                       setFilters({ ...filters, price: e.target.value });
                       filterHeader({
                         ...filterHeader,
-                        price: e,
+                        price: e.target,
                       });
                     }}
                   />
