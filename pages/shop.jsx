@@ -22,12 +22,8 @@ const Shop = () => {
   const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
       .map(([key, value]) => {
-        if (value !== "" && value !== false && value !== 0) {
-          return `${key}=${value}`;
-        }
-        return null;
+        return `${value}`;
       })
-      .filter((query) => query !== null)
       .join("&");
     console.log(queryParams);
     getProducts(queryParams); // Make API call with filtered query parameters
