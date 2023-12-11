@@ -71,7 +71,6 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      filterHeader({ ...filterHeader, price: e });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
@@ -88,10 +87,6 @@ const Shop = () => {
                     onChange={(e) => {
                       applyFilters({ ...filters, price: e.target.value });
                       setFilters({ ...filters, price: e.target.value });
-                      filterHeader({
-                        ...filterHeader,
-                        price: e,
-                      });
                     }}
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
@@ -134,12 +129,11 @@ const Shop = () => {
                         price: e,
                       });
                     }}
-                  >
+                  />
+
+                  <label class="form-check-label" for="flexRadioDefault4">
                     +5000
-                  </input>
-                  {/* <label class="form-check-label" for="flexRadioDefault4">
-                    +5000
-                  </label> */}
+                  </label>
                 </div>
               </div>
               {/* Other filters (color, size, brand, etc.) */}
