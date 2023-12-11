@@ -71,7 +71,7 @@ const Shop = () => {
                     name="flexRadioDefault"
                     id="flexRadioDefault1"
                     value={"&price[$lt]=500"}
-                    checked={(e) => {
+                    onChange={(e) => {
                       setFilters({ ...filters, price: e.target.value });
                       applyFilters(filters);
                     }}
