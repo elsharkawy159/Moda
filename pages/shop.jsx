@@ -10,7 +10,7 @@ const Shop = () => {
     searchKey: "",
     category: "",
     subcategory: "",
-    price: "", // Updated max price to 5000
+    priceRange: { min: 1, max: 5000 }, // Updated max price to 5000
     color: "",
     size: "",
     brand: "",
@@ -60,12 +60,19 @@ const Shop = () => {
               <h4>Filter</h4>
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
-                <div className="input-group">
+                <div className="input-group row">
                   <input
-                    autoComplete="off"
-                    type="search"
-                    className="form-control px-1"
+                    type="number"
+                    className="form-control col-6"
                     placeholder="Minimum Price"
+                    value={filters.priceRange.min}
+                    onInput={(e) => console.log(e.target.value)}
+                  />
+                  <input
+                    type="number"
+                    className="form-control col-6"
+                    placeholder="Maximum Price"
+                    min={filters.priceRange.min}
                     onInput={(e) => console.log(e.target.value)}
                   />
                 </div>
