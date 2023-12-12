@@ -45,6 +45,7 @@ const Shop = () => {
     getProducts(""); // Reset products
   };
   const testConsole = (event) => {
+    console.log(event.target.name);
     console.log(event.target.value);
   };
   return (
@@ -67,14 +68,16 @@ const Shop = () => {
                     type="number"
                     className="form-control col-6"
                     placeholder="Minimum"
+                    name="&price[$gt]="
                     onInput={testConsole}
                   />
                   <input
                     type="number"
                     className="form-control col-6"
                     placeholder="Maximum"
+                    name="&price[$lt]="
                     min={filters.priceRange.min}
-                    onInput={(event) => testConsole(event)}
+                    onInput={testConsole}
                   />
                 </div>
                 <div class="form-check">
