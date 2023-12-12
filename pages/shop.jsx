@@ -60,20 +60,10 @@ const Shop = () => {
               <h4>Filter</h4>
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                    value={"&price[$lt]=500"}
-                    onChange={(e) => {
-                      applyFilters({ ...filters, price: e.target.value });
-                      setFilters({ ...filters, price: e.target.value });
-                    }}
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Under 500
+                <div class="form-outline" data-mdb-input-init>
+                  <input type="text" id="form12" class="form-control" />
+                  <label class="form-label" for="form12">
+                    Example label
                   </label>
                 </div>
                 <div class="form-check">
