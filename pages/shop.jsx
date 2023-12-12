@@ -44,7 +44,9 @@ const Shop = () => {
     }); //Reset
     getProducts(""); // Reset products
   };
-
+  const testConsole = (event) => {
+    console.log(event.target.value);
+  };
   return (
     <>
       <PageHeader
@@ -60,20 +62,19 @@ const Shop = () => {
               <h4>Filter</h4>
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
-                <div className="input-group row">
+                <div className="input-group row p-0">
                   <input
                     type="number"
                     className="form-control col-6"
-                    placeholder="Minimum Price"
-                    value={filters.priceRange.min}
-                    onInput={(e) => console.log(e.target.value)}
+                    placeholder="Minimum"
+                    onInput={testConsole}
                   />
                   <input
                     type="number"
                     className="form-control col-6"
-                    placeholder="Maximum Price"
+                    placeholder="Maximum"
                     min={filters.priceRange.min}
-                    onInput={(e) => console.log(e.target.value)}
+                    onInput={(event) => testConsole(event)}
                   />
                 </div>
                 <div class="form-check">
