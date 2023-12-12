@@ -60,11 +60,14 @@ const Shop = () => {
               <h4>Filter</h4>
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
-                <div class="form-outline" data-mdb-input-init>
-                  <input type="text" id="form12" class="form-control" />
-                  <label class="form-label" for="form12">
-                    Example label
-                  </label>
+                <div className="input-group">
+                  <input
+                    autoComplete="off"
+                    type="search"
+                    className="form-control px-1"
+                    placeholder="Minimum Price"
+                    onInput={(e) => console.log(e.target.value)}
+                  />
                 </div>
                 <div class="form-check">
                   <input
