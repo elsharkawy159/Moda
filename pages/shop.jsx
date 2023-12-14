@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import PageHeader from "../Components/partials/PageHeader.jsx";
 import ProductCard from "../Components/partials/ProductCard/ProductCard.jsx";
 import { useProduct } from "../Context/ProductContext.js";
-<<<<<<< Updated upstream
-=======
 import { useRouter } from "next/router";
 import { useCategory } from "../Context/CetegoryContext.js";
->>>>>>> Stashed changes
 
 const Shop = () => {
   const { getProducts, productData, isLoading } = useProduct();
@@ -23,7 +20,6 @@ const Shop = () => {
     new: "",
     rating: "",
   });
-<<<<<<< Updated upstream
 
   const applyFilters = (filters) => {
     const queryParams = Object.entries(filters)
@@ -33,19 +29,11 @@ const Shop = () => {
       .join("&");
     console.log(queryParams);
     getProducts(queryParams); // Make API call with filtered query parameters
-=======
-  const handleFilter = (filters) => {
-    getProducts(
-      `searchKey=${filters.searchKey}&price[$gt]=${filters.minPrice}&price[$lt]=${filters.maxPrice}&category=${filters.category}`
-    );
-    console.log({ filters });
->>>>>>> Stashed changes
   };
 
   const handleReset = () => {
     setFilters({
       searchKey: "",
-<<<<<<< Updated upstream
       category: "",
       subcategory: "",
       price: "", // Updated max price to 5000
@@ -61,14 +49,6 @@ const Shop = () => {
   const testConsole = (event) => {
     console.log(event.target.name);
     console.log(event.target.value);
-=======
-      minPrice: 1,
-      maxPrice: 5000,
-      category: "",
-      subcategory: "",
-    });
-    handleFilter(" ");
->>>>>>> Stashed changes
   };
   return (
     <>
@@ -83,8 +63,6 @@ const Shop = () => {
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
             <div className="side py-4 px-2">
               <h4>Filter</h4>
-<<<<<<< Updated upstream
-=======
               <div className="my-2">
                 <label htmlFor="search">Search</label>
                 <input
@@ -116,7 +94,6 @@ const Shop = () => {
                 </select>
               </div>
 
->>>>>>> Stashed changes
               <div>
                 <label className="form-label pt-2 fw-semibold">Price</label>
                 <div className="input-group row p-0">
@@ -138,17 +115,6 @@ const Shop = () => {
                 </div>
                 <div class="form-check">
                   <input
-<<<<<<< Updated upstream
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    value={"price[$gt]=500&price[$lt]=1000"}
-                    onChange={(e) => {
-                      applyFilters({ ...filters, price: e.target.value });
-                      setFilters({ ...filters, price: e.target.value });
-                    }}
-=======
                     type="range"
                     class="form-range"
                     id="customRange1"
@@ -158,7 +124,6 @@ const Shop = () => {
                     onChange={(e) =>
                       setFilters({ ...filters, maxPrice: e.target.value })
                     }
->>>>>>> Stashed changes
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     500 To 1000
@@ -209,7 +174,6 @@ const Shop = () => {
             </div>
           </div>
 
-<<<<<<< Updated upstream
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
             <ul className="d-flex text-decoration-none">
@@ -226,20 +190,6 @@ const Shop = () => {
                 <h3>No Products Found</h3>
               ) : (
                 productData?.products?.map((product, index) => (
-=======
-          <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <div className="row h-100">
-              <div>
-                <span>Filter</span>
-                <span>{filters.category?.categoryList?.name}</span>
-              </div>
-              {productData.products >= 0 ? (
-                <div className="d-flex justify-content-center align-items-center">
-                  <p>No Products Found</p>
-                </div>
-              ) : (
-                productData.products?.map((product, index) => (
->>>>>>> Stashed changes
                   <div className="col-md-4" key={index}>
                     <ProductCard product={product} isLoading={isLoading} />
                   </div>
