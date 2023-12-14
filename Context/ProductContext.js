@@ -30,7 +30,7 @@ export function ProductProvider({ children }) {
         `${BaseURL}/product/?${query}`
       );
       setProductData(data);
-      // console.log(data);
+      console.log(data);
     } catch (error) {
       console.error(error);
       console.log(error);

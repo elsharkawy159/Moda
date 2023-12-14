@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import BaseURL from "./BaseURL.js";
 
 const SubcategoryContext = createContext();
@@ -15,6 +15,10 @@ export function SubcategoryProvider({ children }) {
   const [createSubcategoryRes, setCreateSubcategoryRes] = useState([]);
   const [updateSubcategoryRes, setUpdateSubcategoryRes] = useState([]);
 
+  useEffect(() => {
+    getSubcategories()
+  }, [])
+  
   const getSubcategories = async () => {
     try {
       setIsLoading(true);

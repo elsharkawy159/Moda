@@ -2,7 +2,6 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 const ProductCard = ({ product, isLoading }) => {
-  // console.log(product);
   product.rating = 2.1;
 
   return (
@@ -87,6 +86,7 @@ const ProductCard = ({ product, isLoading }) => {
                 ></li>
               ))}
             </ul>
+            <p className="text-sm m-0">{product.categoryId.name.toUpperCase()}</p>
             <h2 className="title">
               <Link href={`/shop/${product.slug}`}>{product.name}</Link>
             </h2>
