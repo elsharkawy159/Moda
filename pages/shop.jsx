@@ -2,54 +2,61 @@ import React, { useState } from "react";
 import PageHeader from "../Components/partials/PageHeader.jsx";
 import ProductCard from "../Components/partials/ProductCard/ProductCard.jsx";
 import { useProduct } from "../Context/ProductContext.js";
-import { useRouter } from "next/router";
 import { useCategory } from "../Context/CetegoryContext.js";
 
 const Shop = () => {
   const { getProducts, productData, isLoading } = useProduct();
   const { categoryData } = useCategory();
   const [filters, setFilters] = useState({
-    searchKey: "",
+    priceRange: { min: null, max: Infinity },
     category: "",
-    subcategory: "",
-    priceRange: { min: 1, max: 5000 }, // Updated max price to 5000
-    color: "",
-    size: "",
-    brand: "",
-    top: "",
-    new: "",
-    rating: "",
   });
 
-  const applyFilters = (filters) => {
-    const queryParams = Object.entries(filters)
-      .map(([key, value]) => {
-        return `${value}`;
-      })
-      .join("&");
-    console.log(queryParams);
-    getProducts(queryParams); // Make API call with filtered query parameters
-  };
-
   const handleReset = () => {
-    setFilters({
-      searchKey: "",
-      category: "",
-      subcategory: "",
-      price: "", // Updated max price to 5000
-      color: "",
-      size: "",
-      brand: "",
-      top: "",
-      new: "",
-      rating: "",
-    }); //Reset
     getProducts(""); // Reset products
   };
-  const testConsole = (event) => {
-    console.log(event.target.name);
-    console.log(event.target.value);
+
+  const handleFilterChange = (event) => {
+    const { name, value } = event.target;
+    const updatedFilters = { ...filters };
+    switch (name) {
+      case "finalPrice[$gt]":
+        updatedFilters.priceRange.min = parseInt(value);
+        break;
+      case "finalPrice[$lt]":
+        updatedFilters.priceRange.max = parseInt(value);
+        break;
+      case "categoryId":
+        updatedFilters.category = value;
+        break;
+      default:
+        break;
+    }
+    setFilters(updatedFilters);
   };
+
+  const constructQuery = () => {
+    const { priceRange, category } = filters;
+    let query = "";
+    if (priceRange.min && priceRange.min > 0) {
+      query += `finalPrice[$gt]=${priceRange.min}&`;
+    }
+    if (priceRange.max && priceRange.max < Infinity) {
+      query += `finalPrice[$lt]=${priceRange.max}&`;
+    }
+    if (category) {
+      query += `categoryId=${category}&`;
+    }
+
+    return query;
+  };
+
+  const applyFilters = () => {
+    const query = constructQuery();
+    console.log(query);
+    getProducts(query);
+  };
+
   return (
     <>
       <PageHeader
@@ -63,128 +70,73 @@ const Shop = () => {
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
             <div className="side py-4 px-2">
               <h4>Filter</h4>
-              <div className="my-2">
-                <label htmlFor="search">Search</label>
-                <input
-                  onChange={(e) =>
-                    setFilters({ ...filters, searchKey: e.target.value })
-                  }
-                  type="search"
-                  id="search"
-                  className="form-control"
-                />
-              </div>
 
-              {/* Category dropdown */}
               <div className="my-2">
-                <label htmlFor="">Category</label>
+                <label htmlFor="category">Category</label>
                 <select
+                  id="category"
                   className="form-select"
-                  onChange={(e) =>
-                    setFilters({ ...filters, category: e.target.value })
-                  }
+                  onChange={handleFilterChange}
+                  name="categoryId"
                 >
                   <option value="">All Categories</option>
                   {categoryData?.categoryList?.map((category) => {
                     const categoryName = category.name
                       .toLowerCase()
                       .replace(/\b\w/g, (char) => char.toUpperCase());
-                    return <option value={category.id}>{categoryName}</option>;
+                    return (
+                      <option key={category.id} value={category.id}>
+                        {categoryName}
+                      </option>
+                    );
                   })}
                 </select>
               </div>
 
               <div>
-                <label className="form-label pt-2 fw-semibold">Price</label>
-                <div className="input-group row p-0">
+                <label htmlFor="minPrice">Price</label>
+                <div className="input-group row m-0">
                   <input
                     type="number"
+                    id="minPrice"
                     className="form-control col-6"
                     placeholder="Minimum"
-                    name="&price[$gt]="
-                    onInput={testConsole}
+                    name="finalPrice[$gt]"
+                    min={1}
+                    onInput={handleFilterChange}
                   />
                   <input
                     type="number"
                     className="form-control col-6"
                     placeholder="Maximum"
-                    name="&price[$lt]="
-                    min={filters.priceRange.min}
-                    onInput={testConsole}
+                    name="finalPrice[$lt]"
+                    min={1}
+                    max={Infinity}
+                    onInput={handleFilterChange}
                   />
-                </div>
-                <div class="form-check">
-                  <input
-                    type="range"
-                    class="form-range"
-                    id="customRange1"
-                    min={filters.minPrice}
-                    max={5000}
-                    value={filters.maxPrice}
-                    onChange={(e) =>
-                      setFilters({ ...filters, maxPrice: e.target.value })
-                    }
-                  />
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    500 To 1000
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault3"
-                    value={"price[$gt]=1000&price[$lt]=5000"}
-                    onChange={(e) => {
-                      applyFilters({ ...filters, price: e.target.value });
-                      setFilters({ ...filters, price: e.target.value });
-                    }}
-                  />
-                  <label class="form-check-label" for="flexRadioDefault3">
-                    1000 To 5000
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault4"
-                    value={"price[$gt]=5000"}
-                    onChange={(e) => {
-                      applyFilters({ ...filters, price: e.target.value });
-                      setFilters({ ...filters, price: e.target.value });
-                    }}
-                  />
-                  <label class="form-check-label" for="flexRadioDefault4">
-                    +5000
-                  </label>
                 </div>
               </div>
-              {/* Other filters (color, size, brand, etc.) */}
-              {/* ... */}
 
-              <button
-                className="btn btn-moda w-100 rounded-0 rounded-bottom"
-                onClick={handleReset}
-              >
-                Reset
-              </button>
+              <div className="my-3">
+                <button
+                  className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
+                  onClick={applyFilters}
+                >
+                  Apply
+                </button>
+
+                <button
+                  className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
+                  onClick={handleReset}
+                >
+                  Reset
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <ul className="d-flex text-decoration-none">
-              {Object.entries(filters).map(([key, value]) =>
-                value === "" ? null : (
-                  <li className="mx-1 bg-main rounded-5" key={key}>
-                    {JSON.stringify(value)}
-                  </li>
-                )
-              )}
-            </ul>
             <div className="row text-center">
               {productData.productsCount === 0 ? (
                 <h3>No Products Found</h3>
