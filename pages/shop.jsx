@@ -10,11 +10,18 @@ const Shop = () => {
   const [filters, setFilters] = useState({
     priceRange: { min: null, max: Infinity },
     category: "",
+    colors: "",
   });
 
-  const handleReset = () => {
-    getProducts(""); // Reset products
-  };
+  const colorList = [
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "gray",
+    "white",
+    "black",
+  ];
 
   const handleFilterChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +36,9 @@ const Shop = () => {
       case "categoryId":
         updatedFilters.category = value;
         break;
+      case "colors":
+        updatedFilters.colors = value;
+        break;
       default:
         break;
     }
@@ -36,7 +46,7 @@ const Shop = () => {
   };
 
   const constructQuery = () => {
-    const { priceRange, category } = filters;
+    const { priceRange, category, colors } = filters;
     let query = "";
     if (priceRange.min && priceRange.min > 0) {
       query += `finalPrice[$gt]=${priceRange.min}&`;
@@ -47,6 +57,9 @@ const Shop = () => {
     if (category) {
       query += `categoryId=${category}&`;
     }
+    if (colors) {
+      query += `colors=${colors}&`;
+    }
 
     return query;
   };
@@ -54,6 +67,7 @@ const Shop = () => {
   const applyFilters = () => {
     const query = constructQuery();
     console.log(query);
+    console.log(filters);
     getProducts(query);
   };
 
@@ -68,7 +82,10 @@ const Shop = () => {
       <div className="container">
         <div className="row pb-5">
           <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
-            <div className="side py-4 px-2">
+            <form
+              onSubmit={(event) => event.preventDefault()}
+              className="side py-4 px-2"
+            >
               <h4>Filter</h4>
 
               <div className="my-2">
@@ -93,7 +110,7 @@ const Shop = () => {
                 </select>
               </div>
 
-              <div>
+              <div className="my-2">
                 <label htmlFor="minPrice">Price</label>
                 <div className="input-group row m-0">
                   <input
@@ -103,6 +120,7 @@ const Shop = () => {
                     placeholder="Minimum"
                     name="finalPrice[$gt]"
                     min={1}
+                    value={filters.priceRange.min}
                     onInput={handleFilterChange}
                   />
                   <input
@@ -117,29 +135,82 @@ const Shop = () => {
                 </div>
               </div>
 
-              <div className="my-3">
-                <button
-                  className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
-                  onClick={applyFilters}
-                >
-                  Apply
-                </button>
-
-                <button
-                  className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
-                  onClick={handleReset}
-                >
-                  Reset
-                </button>
+              <div className="my-2">
+                <label htmlFor="colors" className="d-block">
+                  Colors
+                </label>
+                {colorList.map((color, index) => {
+                  return (
+                    <div class="form-check form-check-inline">
+                      <input
+                        key={index}
+                        class="form-check-input d-flex justify-content-center align-items-center"
+                        style={{
+                          width: "30px",
+                          height: "30px",
+                          borderRadius: "50%",
+                          background: `${color}`,
+                        }}
+                        type="radio"
+                        onChange={handleFilterChange}
+                        name="colors"
+                        id="inlineRadio3"
+                        value={color}
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            </div>
+
+              <div className="my-3">
+                {isLoading ? (
+                  <button
+                    className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
+                    disabled
+                  >
+                    <i class="fa-solid fa-spinner fa-spin fs-2 text-main"></i>
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
+                      onClick={applyFilters}
+                    >
+                      Apply
+                    </button>
+                    <button
+                      className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
+                      onClick={() => window.location.reload()}
+                    >
+                      Reset
+                    </button>
+                  </>
+                )}
+              </div>
+            </form>
           </div>
 
           {/* Product display */}
           <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
-            <div className="row text-center">
+            <div className="row">
+              <select
+                id="category"
+                className="form-select w-25 m-3 mb-0"
+                onChange={handleFilterChange}
+                name="sort"
+              >
+                <option value="">Sorting</option>
+                <option value="">A - Z</option>
+                <option value="">Z - A</option>
+                <option value="">Price - Low to High</option>
+                <option value="">Price - High to Low</option>
+              </select>
+            </div>
+            <div className="row h-100 align-items-center text-center">
               {productData.productsCount === 0 ? (
-                <h3>No Products Found</h3>
+                <h3 className="text-muted fw-light">
+                  No Products Found <i class="fa-solid fa-ban"></i>
+                </h3>
               ) : (
                 productData?.products?.map((product, index) => (
                   <div className="col-md-4" key={index}>

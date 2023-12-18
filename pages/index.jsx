@@ -9,7 +9,6 @@ import { useProduct } from "../Context/ProductContext.js";
 import TrendingNow from "../Components/partials/ProductSliders/TrendingNow.jsx";
 import FeaturedFootwear from "../Components/partials/ProductSliders/FeaturedFootwear.jsx";
 import BagsAndAccessories from "../Components/partials/ProductSliders/BagsAndAccessories.jsx";
-import CallToAction from "../Components/partials/CallToAction.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
