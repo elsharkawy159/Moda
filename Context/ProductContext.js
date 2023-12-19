@@ -6,6 +6,7 @@ const ProductContext = createContext();
 
 export function useProduct() {
   return useContext(ProductContext);
+  const [isLoading, setIsLoading] = useState(false);
 }
 
 export function ProductProvider({ children }) {
@@ -17,7 +18,7 @@ export function ProductProvider({ children }) {
   const [updateProductRes, setUpdateProductRes] = useState([]);
   const [addToWishlistRes, setAddToWishlistRes] = useState([]);
   useEffect(() => {
-    getProducts("page=1");
+    getProducts("size=100");
   }, []);
 
   const getProducts = async (query) => {
@@ -28,8 +29,8 @@ export function ProductProvider({ children }) {
       setProductData(data);
       console.log(data);
     } catch (error) {
-      console.error(error);
-      console.log(error);
+      setIsLoading(false);
+      return
     } finally {
       setTimeout(() => {
         setIsLoading(false);

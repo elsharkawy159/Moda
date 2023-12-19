@@ -3,6 +3,8 @@ import PageHeader from "../Components/partials/PageHeader.jsx";
 import ProductCard from "../Components/partials/ProductCard/ProductCard.jsx";
 import { useProduct } from "../Context/ProductContext.js";
 import { useCategory } from "../Context/CetegoryContext.js";
+import FilterOption from "../Components/features/FilterOption.jsx";
+import ColorRadio from "../Components/features/ColorRadio.jsx";
 
 const Shop = () => {
   const { getProducts, productData, isLoading } = useProduct();
@@ -40,10 +42,11 @@ const Shop = () => {
       case "colors":
         updatedFilters.colors = value;
         break;
-      case "page":
-        updatedFilters.page =
-          value === "Previous" ? filters.page - 1 : filters.page + 1;
-        applyFilters();
+      case "new":
+        updatedFilters.New = true;
+        break;
+      case "top":
+        updatedFilters.top = true;
         break;
       default:
         break;
@@ -52,7 +55,7 @@ const Shop = () => {
   };
 
   const constructQuery = () => {
-    const { priceRange, category, colors, page } = filters;
+    const { priceRange, category, colors, top, New } = filters;
     let query = "";
     if (priceRange.min && priceRange.min > 0) {
       query += `finalPrice[$gt]=${priceRange.min}&`;
@@ -66,8 +69,11 @@ const Shop = () => {
     if (colors) {
       query += `colors=${colors}&`;
     }
-    if (page) {
-      query += `page=${productData.page + 1}&`;
+    if (top) {
+      query += `top=${true}&`;
+    }
+    if (New) {
+      query += `new=${true}&`;
     }
     return query;
   };
@@ -96,7 +102,7 @@ const Shop = () => {
             >
               <h4>Filter</h4>
 
-              <div className="my-2">
+              <div className="my-3">
                 <label htmlFor="category">Category</label>
                 <select
                   id="category"
@@ -118,7 +124,7 @@ const Shop = () => {
                 </select>
               </div>
 
-              <div className="my-2">
+              <div className="my-3">
                 <label htmlFor="minPrice">Price</label>
                 <div className="input-group row m-0">
                   <input
@@ -142,32 +148,31 @@ const Shop = () => {
                   />
                 </div>
               </div>
+              <div className="my-3">
+                <FilterOption
+                  label="New"
+                  name="new"
+                  onChange={handleFilterChange}
+                />
+                <FilterOption
+                  label="Top"
+                  name="top"
+                  onChange={handleFilterChange}
+                />
+              </div>
 
-              <div className="my-2">
+              <div className="my-3">
                 <label htmlFor="colors" className="d-block">
                   Colors
                 </label>
-                {colorList.map((color, index) => {
-                  return (
-                    <div class="form-check form-check-inline">
-                      <input
-                        key={index}
-                        class="form-check-input d-flex justify-content-center align-items-center"
-                        style={{
-                          width: "30px",
-                          height: "30px",
-                          borderRadius: "50%",
-                          background: `${color}`,
-                        }}
-                        type="radio"
-                        onChange={handleFilterChange}
-                        name="colors"
-                        id="inlineRadio3"
-                        value={color}
-                      />
-                    </div>
-                  );
-                })}
+                {colorList.map((color, index) => (
+                  <ColorRadio
+                    key={index}
+                    color={color}
+                    index={index}
+                    onChange={handleFilterChange}
+                  />
+                ))}
               </div>
 
               <div className="my-3">
@@ -226,40 +231,6 @@ const Shop = () => {
                   </div>
                 ))
               )}
-              <nav
-                className="d-flex justify-content-center border-top pt-2"
-                aria-label="Page navigation example"
-              >
-                <ul className="pagination">
-                  <li className="page-item">
-                    <a
-                      className="page-link"
-                      onClick={handleFilterChange}
-                      name="page"
-                      href="#"
-                      aria-label="Previous"
-                    >
-                      Previous
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <span className="page-link" style={{ cursor: "default" }}>
-                      {productData.page || 1}
-                    </span>
-                  </li>
-                  <li className="page-item">
-                    <a
-                      className="page-link"
-                      onClick={handleFilterChange}
-                      name="page"
-                      href="#"
-                      aria-label="Next"
-                    >
-                      Next
-                    </a>
-                  </li>
-                </ul>
-              </nav>
             </div>
           </div>
         </div>
