@@ -11,6 +11,7 @@ const Shop = () => {
     priceRange: { min: null, max: Infinity },
     category: "",
     colors: "",
+    page: 1,
   });
 
   const colorList = [
@@ -39,6 +40,11 @@ const Shop = () => {
       case "colors":
         updatedFilters.colors = value;
         break;
+      case "page":
+        updatedFilters.page =
+          value === "Previous" ? filters.page - 1 : filters.page + 1;
+        applyFilters();
+        break;
       default:
         break;
     }
@@ -46,7 +52,7 @@ const Shop = () => {
   };
 
   const constructQuery = () => {
-    const { priceRange, category, colors } = filters;
+    const { priceRange, category, colors, page } = filters;
     let query = "";
     if (priceRange.min && priceRange.min > 0) {
       query += `finalPrice[$gt]=${priceRange.min}&`;
@@ -60,7 +66,9 @@ const Shop = () => {
     if (colors) {
       query += `colors=${colors}&`;
     }
-
+    if (page) {
+      query += `page=${productData.page + 1}&`;
+    }
     return query;
   };
 
@@ -81,7 +89,7 @@ const Shop = () => {
       />
       <div className="container">
         <div className="row pb-5">
-          <div className="col-md-3 shadow-4 border border-top-0 border-bottom-0">
+          <div className="col-md-3 border border-top-0">
             <form
               onSubmit={(event) => event.preventDefault()}
               className="side py-4 px-2"
@@ -191,7 +199,7 @@ const Shop = () => {
           </div>
 
           {/* Product display */}
-          <div className="col-md-9 shadow-4 border border-top-0 border-bottom-0">
+          <div className="col-md-9 border-bottom">
             <div className="row">
               <select
                 id="category"
@@ -206,7 +214,7 @@ const Shop = () => {
                 <option value="">Price - High to Low</option>
               </select>
             </div>
-            <div className="row h-100 align-items-center text-center">
+            <div className="row h-100 align-items-center text-center pb-5">
               {productData.productsCount === 0 ? (
                 <h3 className="text-muted fw-light">
                   No Products Found <i class="fa-solid fa-ban"></i>
@@ -218,6 +226,40 @@ const Shop = () => {
                   </div>
                 ))
               )}
+              <nav
+                className="d-flex justify-content-center border-top pt-2"
+                aria-label="Page navigation example"
+              >
+                <ul className="pagination">
+                  <li className="page-item">
+                    <a
+                      className="page-link"
+                      onClick={handleFilterChange}
+                      name="page"
+                      href="#"
+                      aria-label="Previous"
+                    >
+                      Previous
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <span className="page-link" style={{ cursor: "default" }}>
+                      {productData.page || 1}
+                    </span>
+                  </li>
+                  <li className="page-item">
+                    <a
+                      className="page-link"
+                      onClick={handleFilterChange}
+                      name="page"
+                      href="#"
+                      aria-label="Next"
+                    >
+                      Next
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>

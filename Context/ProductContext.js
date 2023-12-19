@@ -16,19 +16,15 @@ export function ProductProvider({ children }) {
   const [createProductRes, setCreateProductRes] = useState([]);
   const [updateProductRes, setUpdateProductRes] = useState([]);
   const [addToWishlistRes, setAddToWishlistRes] = useState([]);
-  const [removeFromWishlistRes, setRemoveFromWishlistRes] = useState([]);
-
   useEffect(() => {
-    getProducts("");
+    getProducts("page=1");
   }, []);
 
   const getProducts = async (query) => {
     try {
       setIsLoading(true);
 
-      const { data } = await axios.get(
-        `${BaseURL}/product/?${query}`
-      );
+      const { data } = await axios.get(`${BaseURL}/product/?${query}`);
       setProductData(data);
       console.log(data);
     } catch (error) {
