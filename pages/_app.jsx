@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
 import "../public/Components.style/style.css";
+
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
 
@@ -57,6 +58,7 @@ export default function App({ Component, pageProps }) {
             </CartProvider>
           </BrandProvider>
         </AuthProvider>
+        
     </>
   );
 }

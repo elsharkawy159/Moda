@@ -52,14 +52,7 @@ const Product = () => {
                       ...productDetailsData?.product?.subImages,
                     ].map((image, index) => (
                       <div key={index}>
-                        {/* <Magnifier
-                          src={image?.secure_url}
-                          width={"100%"}
-                          height={"100%"}
-                          mgWidth={2050}
-                          mgHeight={2050}
-                          zoomFactor={0.1}
-                        /> */}
+                        <img src={image?.secure_url} className="img-fluid" />
                       </div>
                     ))}
                   </Slider>

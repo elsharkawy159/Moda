@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script.js";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -14,15 +14,23 @@ export default function Document() {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+          strategy="lazyOnload"
+        />
+        {/* Adding Bootstrap JavaScript */}
+        <Script
+          src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+          strategy="lazyOnload"
         />
       </Head>
       <body>
         <script src="/js/mdb.min.js" />
 
         <Main />
-
         <NextScript />
       </body>
     </Html>
