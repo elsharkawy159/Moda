@@ -75,6 +75,16 @@ export default function Home() {
         <div className="container">
           <TrendingNow />
         </div>
+        <BannerAd
+          height={29}
+          col={"col-lg-3 col-md-6 col-12"}
+          bg={"/img/mainSlider/slide-5.jpg"}
+          title={"New Arrivals"}
+          sub={"WaterProof"}
+          position={"end"}
+          starts={"From $19.99"}
+          color={"text-dark"}
+        />
       </div>
       <div className="container border-bottom">
         <FeaturedFootwear />
