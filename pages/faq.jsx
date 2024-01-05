@@ -5,7 +5,7 @@ const faq = () => {
   return (
     <>
       <PageHeader
-        title={"faqs"}
+        title={"frequently asked question"}
         subTitle={"Most common questions and answers"}
       />
       <div className="container">
