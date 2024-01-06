@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import ServicesSlider from "../Components/partials/Sliders/ServicesSlider.jsx";
 import MainSlider from "../Components/partials/Sliders/MainSlider.jsx";
 import CategoriesSlider from "../Components/partials/Sliders/CategoriesSlider.jsx";
-import BannerAd from "../Components/partials/BannerAd.jsx";
 import BrandSlider from "../Components/partials/Sliders/BrandsSlider.jsx";
 import { useProduct } from "../Context/ProductContext.js";
 import TrendingNow from "../Components/partials/ProductSliders/TrendingNow.jsx";
@@ -26,65 +25,11 @@ export default function Home() {
       <ServicesSlider />
       <MainSlider />
       <CategoriesSlider />
-      <div className="container pt-5">
-        <div className="row g-3">
-          <BannerAd
-            height={29}
-            col={"col-lg-3 col-md-6 col-12"}
-            bg={"/img/mainSlider/slide-5.jpg"}
-            title={"New Arrivals"}
-            sub={"WaterProof"}
-            position={"end"}
-            starts={"From $19.99"}
-            color={"text-dark"}
-          />
-          <div className="col-md-6">
-            <BannerAd
-              height={14}
-              col={"col-12"}
-              bg={"/img/mainSlider/slide-6.jpg"}
-              title={"Limited Time Offer"}
-              sub={"Special Discounts"}
-              position={"center"}
-              starts={"From $19.99"}
-              color={"text-dark"}
-            />
-            <BannerAd
-              height={14}
-              col={"col-12"}
-              bg={"/img/mainSlider/slide-7.jpg"}
-              title={"Limited Time Offer"}
-              sub={"Special Discounts"}
-              position={"center"}
-              starts={"From $19.99"}
-            />
-          </div>
-          <BannerAd
-            height={29}
-            col={"col-lg-3 col-md-6 col-12"}
-            bg={"/img/mainSlider/slide-8.jpg"}
-            title={"Free Shipping"}
-            sub={"On All Orders"}
-            position={"top"}
-            starts={"From $19.99"}
-          />
-        </div>
-      </div>
       <BrandSlider />
       <div className="bg-light">
         <div className="container">
           <TrendingNow />
         </div>
-        <BannerAd
-          height={29}
-          col={"col-lg-3 col-md-6 col-12"}
-          bg={"/img/mainSlider/slide-5.jpg"}
-          title={"New Arrivals"}
-          sub={"WaterProof"}
-          position={"end"}
-          starts={"From $19.99"}
-          color={"text-dark"}
-        />
       </div>
       <div className="container border-bottom">
         <FeaturedFootwear />

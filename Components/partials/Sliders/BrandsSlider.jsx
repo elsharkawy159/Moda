@@ -48,7 +48,7 @@ const BrandSlider = () => {
   };
   return (
     <div className="">
-      <div className="container py-3 pb-5">
+      <div className="container py-3">
         <Slider {...settings}>
           {brandData?.brandList?.map((brand, index) => {
             return (
