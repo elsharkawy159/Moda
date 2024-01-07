@@ -1,5 +1,5 @@
 .product-grid {
-max-height: 800px;
+  max-height: 800px;
   font-family: "Oswald", sans-serif;
   text-align: center;
 }
@@ -37,14 +37,14 @@ max-height: 800px;
 .product-grid:hover .product-image .pic-2 {
   opacity: 1;
 }
-.product-grid .product-sale-label,
+.product-grid .product-sale-label, .product-new-label,
 .product-grid .product-discount-label {
   color: #fff;
   background: #da5555;
   font-size: 12px;
   letter-spacing: 1px;
   line-height: 14px;
-  padding: 5px 11px;
+  padding: 5px 12px;
   border-radius: 12px;
   position: absolute;
   top: 10px;
@@ -57,25 +57,32 @@ max-height: 800px;
   left: 10px;
   right: auto;
 }
+.product-grid .product-new-label {
+  background: var(--main-color);
+  text-transform: uppercase;
+  left: 10px;
+  top: 40px;
+  right: auto;
+}
 .product-grid .product-content {
   padding: 12px;
 }
- .rating {
+.rating {
   padding: 0;
   margin: 0 0 7px;
   list-style: none;
 }
- .rating li {
+.rating li {
   color: var(--main-color);
   font-size: 12px;
   display: inline-block;
 }
- .rating li.disable {
+.rating li.disable {
   color: rgba(0, 0, 0, 0.2);
 }
 .product-grid .title {
   color: var(--main-color);
-  font-size: 20px;
+  font-size: 16px;
   text-transform: capitalize;
   margin: 0 0 7px;
 }
@@ -87,8 +94,7 @@ max-height: 800px;
   color: var(--main-color);
 }
 .product-grid .price {
-  /* color: var(--main-color); */
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.005em;
   margin-bottom: 10px;
 }
@@ -106,7 +112,7 @@ max-height: 800px;
 .product-grid .add-to-cart {
   color: #eee;
   background: #494949;
-  font-size: 14px;
+  font-size: 10px;
   width: calc(100% - 75px);
   padding: 8px 3px;
   margin: 0 auto;

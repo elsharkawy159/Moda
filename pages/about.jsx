@@ -1,6 +1,5 @@
 import React from "react";
 import PageHeader from "../Components/partials/PageHeader.jsx";
-import BannerAd from "../Components/partials/BannerAd.jsx";
 
 const about = () => {
   return (

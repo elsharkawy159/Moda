@@ -1,19 +1,28 @@
-import React from 'react'
-import { useProduct } from '../../../Context/ProductContext.js';
-import ProductsSliderComponent from '../ProductsSliderComponent.jsx';
+import React from "react";
+import { useProduct } from "../../../Context/ProductContext.js";
+import ProductsSliderComponent from "../ProductsSliderComponent.jsx";
 
 const FeaturedFootwear = () => {
-      const { productData, isLoading } = useProduct();
+  const { productData, isLoading } = useProduct();
+
+  const menProducts = productData?.products?.filter(
+    (product) => product.categoryId.name === "kids & baby"
+  );
+
+  const womenProducts = productData?.products?.filter(
+    (product) => product.categoryId.name === "women"
+  );
+
   return (
     <ProductsSliderComponent
-      title={"Featured Footwear"}
+      title={"Featured Clothes"}
       isLoading={isLoading}
-      tabTitle1={"MEN'S SHOES"}
-      tabTitle2={"WOMEN'S SHOES"}
-      productsData1={productData?.products}
-      productsData2={productData?.products}
+      tabTitle1={"KIDS AND BABY"}
+      tabTitle2={"WOMEN SHOES"}
+      productsData1={menProducts}
+      productsData2={womenProducts}
     />
   );
-}
+};
 
-export default FeaturedFootwear
+export default FeaturedFootwear;

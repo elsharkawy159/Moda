@@ -2,16 +2,26 @@ import React, { useState, useEffect } from "react";
 import ProductsSliderComponent from "../ProductsSliderComponent.jsx";
 import { useProduct } from "../../../Context/ProductContext.js";
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 const TrendingNow = () => {
   const { productData, isLoading } = useProduct();
+
+  const shuffledProducts = productData?.products
+    ? shuffleArray([...productData.products])
+    : [];
+
   return (
     <ProductsSliderComponent
       title={"Trending Now"}
       isLoading={isLoading}
-      tabTitle1={"MEN'S CLOTHES"}
-      tabTitle2={"WOMEN'S CLOTHING"}
-      productsData1={productData?.products}
-      productsData2={productData?.products}
+      productsData1={shuffledProducts}
     />
   );
 };

@@ -68,11 +68,16 @@ const ProductCard = ({ product, isLoading }) => {
                 {product.top ? "TOP" : ""}
               </span>
             )}
-            {product.discount && (
+            {product.top && (
+              <span className="product-new-label">
+                {product.new ? "NEW" : ""}
+              </span>
+            )}
+            {product.discount > 0 ? (
               <span className="product-discount-label">
                 -{product.discount}%
               </span>
-            )}
+            ) : null}
           </div>
           <div className="product-content">
             <ul className="rating" title={product.rating}>
@@ -86,9 +91,13 @@ const ProductCard = ({ product, isLoading }) => {
                 ></li>
               ))}
             </ul>
-            <p className="text-sm m-0">{product.categoryId.name.toUpperCase()}</p>
+            <p className="text-sm m-0">
+              {product.categoryId.name.toUpperCase()}
+            </p>
             <h2 className="title">
-              <Link href={`/shop/${product.slug}`}>{product.name}</Link>
+              <Link href={`/shop/${product.slug}`}>
+                {product.name.split(" ").slice(0, 3).join(" ")}
+              </Link>
             </h2>
             <div className={`price ${product.discount ? "text-danger" : ""}`}>
               <sup>

@@ -219,14 +219,14 @@ const Shop = () => {
                 <option value="">Price - High to Low</option>
               </select>
             </div>
-            <div className="row h-100 align-items-center text-center pb-5">
+            <div className="row h-100 text-center pb-5">
               {productData.productsCount === 0 ? (
                 <h3 className="text-muted fw-light">
                   No Products Found <i class="fa-solid fa-ban"></i>
                 </h3>
               ) : (
                 productData?.products?.map((product, index) => (
-                  <div className="col-md-4" key={index}>
+                  <div className="col-md-3" key={index}>
                     <ProductCard product={product} isLoading={isLoading} />
                   </div>
                 ))
