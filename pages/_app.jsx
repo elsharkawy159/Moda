@@ -14,6 +14,7 @@ import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
+import "@/styles/mediaQuery.css";
 import "../public/Components.style/style.css";
 
 export default function App({ Component, pageProps }) {

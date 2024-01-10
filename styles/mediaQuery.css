@@ -1,0 +1,48 @@
+@media screen and (max-width: 992px) {
+  .headerIcons {
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 9px;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .navbar-brand {
+    margin: auto !important;
+  }
+  .navbar-toggler {
+    display: flex !important;
+    margin: auto !important;
+    padding: 5px;
+  }
+  .categorySlider button {
+    font-size: 12px !important;
+  }
+  h4,
+  a {
+    font-size: 15px;
+  }
+  .trendingNow h4 {
+    text-align: center;
+  }
+  .sliderComp {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footerLogoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  span {
+    font-size: 10px !important;
+  }
+  .product-sale-label,
+  .product-new-label,
+  .product-discount-label {
+    padding: 6px !important;
+  }
+}

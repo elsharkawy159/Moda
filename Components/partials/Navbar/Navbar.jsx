@@ -15,7 +15,7 @@ const Navbar = () => {
 
           <SearchBar />
 
-          <ul className="navbar-nav d-flex align-items-center">
+          <ul className="headerIcons navbar-nav d-flex align-items-center">
             <Language />
             <li className="nav-item me-3 me-lg-4">
               <NavIcon
@@ -55,7 +55,7 @@ const Navbar = () => {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav m-auto mb-2 mb-lg-0 d-flex align-items-center">
               <NavList href={"/"}>HOME</NavList>
               <NavList href={"/about"}>ABOUT</NavList>
               <NavList href={"/shop"}>SHOP</NavList>
@@ -82,4 +82,3 @@ const NavList = ({ children, href }) => {
   );
 };
 export default Navbar;
-  

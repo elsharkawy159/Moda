@@ -2,8 +2,6 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 const ProductCard = ({ product, isLoading }) => {
-  product.rating = 2.1;
-
   return (
     <>
       {!product || isLoading ? (
@@ -86,7 +84,7 @@ const ProductCard = ({ product, isLoading }) => {
                   key={index}
                   title={product.rating}
                   className={`fas fa-star${
-                    index < product.rating.toFixed() ? "" : " disable"
+                    index < product?.rating?.toFixed() ? "" : " disable"
                   }`}
                 ></li>
               ))}

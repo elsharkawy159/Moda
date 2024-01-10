@@ -226,7 +226,7 @@ const Shop = () => {
                 </h3>
               ) : (
                 productData?.products?.map((product, index) => (
-                  <div className="col-md-3" key={index}>
+                  <div className="col-lg-3 col-md-6 col-6" key={index}>
                     <ProductCard product={product} isLoading={isLoading} />
                   </div>
                 ))

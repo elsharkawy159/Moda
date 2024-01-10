@@ -64,7 +64,7 @@ const Footer = () => {
         <section>
           <div className="container-lg container-fluid text-center text-md-start mt-5">
             <div className="row mt-3">
-              <div className="col-md-3 mx-auto mb-4">
+              <div className="footerLogoSection col-md-3 mx-auto mb-4">
                 <Logo hatColor={"text-light"} />
                 <div className="mb-2"></div>
                 <p className="mb-4">

@@ -47,7 +47,7 @@ const CategoriesSlider = () => {
     // ],
   };
   return (
-    <div className="bg-dark mt-n2">
+    <div className="categorySlider bg-dark mt-n2">
       <div className="container-fluid py-2">
         <div className="row">
           {categoryData?.categoryList?.map((category, index) => {
@@ -64,7 +64,7 @@ const CategoriesSlider = () => {
                   height={200}
                 />
                 <div className="layer"></div>
-                <button className="btn btn-moda position-absolute top-50 start-50 translate-middle text-uppercase fw-normal fs-5 p-1 px-2">
+                <button className="btn btn-moda position-absolute top-50 start-50 translate-middle text-uppercase fw-normal p-1 px-2">
                   {category.name}
                 </button>
               </div>

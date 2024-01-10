@@ -18,11 +18,13 @@ const TrendingNow = () => {
     : [];
 
   return (
-    <ProductsSliderComponent
-      title={"Trending Now"}
-      isLoading={isLoading}
-      productsData1={shuffledProducts}
-    />
+    <div className="trendingNow">
+      <ProductsSliderComponent
+        title={"Trending Now"}
+        isLoading={isLoading}
+        productsData1={shuffledProducts}
+      />
+    </div>
   );
 };
 

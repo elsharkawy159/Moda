@@ -18,7 +18,7 @@ const FeaturedFootwear = () => {
       title={"Featured Clothes"}
       isLoading={isLoading}
       tabTitle1={"KIDS AND BABY"}
-      tabTitle2={"WOMEN SHOES"}
+      tabTitle2={"WOMEN"}
       productsData1={menProducts}
       productsData2={womenProducts}
     />

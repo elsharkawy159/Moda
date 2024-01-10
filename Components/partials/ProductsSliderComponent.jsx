@@ -22,8 +22,8 @@ const ProductsSliderComponent = ({
   const tabId2 = makeValidId(tabTitle2);
 
   return (
-    <div className="row py-5 gy-4">
-      <div className="d-flex justify-content-between align-items-center">
+    <div className="row py-3 gy-4 py-md-5">
+      <div className="sliderComp d-flex justify-content-between align-items-center">
         <h4 className="m-0 fw-semibold">{title}</h4>
         <ul className="nav nav-tabs" id="ex1" role="tablist">
           {tabTitle1 && (

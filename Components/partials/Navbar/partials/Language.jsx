@@ -2,9 +2,9 @@ import React from "react";
 
 const Language = () => {
   return (
-    <div className="nav-item me-3 dropdown">
+    <div className="nav-item languageIcon me-0 me-md-2 dropdown">
       <a
-        className="text-reset me-3 dropdown-toggle"
+        className="text-reset me-0 me-md-2 dropdown-toggle"
         href="#"
         id="navbarDropdown"
         role="button"
