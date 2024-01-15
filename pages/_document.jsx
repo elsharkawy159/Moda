@@ -21,15 +21,8 @@ export default function Document() {
           src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
           strategy="lazyOnload"
         />
-        {/* Adding Bootstrap JavaScript */}
-        <Script
-          src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-          strategy="lazyOnload"
-        />
       </Head>
       <body>
-        <script src="/js/mdb.min.js" />
-
         <Main />
         <NextScript />
       </body>

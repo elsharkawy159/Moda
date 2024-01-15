@@ -52,8 +52,10 @@ export function AuthProvider({ children }) {
       setIsLoading(true);
       const { data } = await axios.post(`${BaseURL}/auth/signin`, credentials);
       setSignInRes(data);
+      console.log(data);
     } catch (error) {
       setSignInRes(error?.response?.data);
+      console.log(error?.response?.data);
     } finally {
       setIsLoading(false);
     }
