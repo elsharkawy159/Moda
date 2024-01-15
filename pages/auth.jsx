@@ -11,7 +11,10 @@ const auth = () => {
       password: "",
     },
     validationSchema: yup.object({
-      email: yup.string().email("Invalid email address").required("Required"),
+      email: yup
+        .string()
+        .email("Invalid Email Address")
+        .required("Email Address is Required"),
       password: yup
         .string()
         .required("Password is required")
@@ -26,8 +29,7 @@ const auth = () => {
       console.log(values);
     },
   });
-  const { handleBlur, handleChange, handleSubmit, values, isSubmitting } =
-    formik;
+  const { handleBlur, handleChange, handleSubmit, values } = formik;
 
   return (
     <>
