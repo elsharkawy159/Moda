@@ -16,9 +16,12 @@ import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
 import "@/styles/mediaQuery.css";
 import "../public/Components.style/style.css";
+import IsLoggedIn from "../Context/IsLoggedIn.js";
 
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
+
+  IsLoggedIn();
 
   TopBarProgress.config({
     barColors: {

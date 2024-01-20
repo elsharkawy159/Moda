@@ -11,8 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState(null);
+
 
   const [usersByRoleRes, setUsersByRoleRes] = useState([]);
   const [signUpRes, setSignUpRes] = useState([]);
@@ -22,25 +21,6 @@ export function AuthProvider({ children }) {
   const [sendCodeRes, setSendCodeRes] = useState([]);
   const [forgetPasswordRes, setForgetPasswordRes] = useState([]);
 
-  useEffect(() => {
-    const userToken = localStorage.getItem("userToken");
-    const parsedToken = JSON.parse(userToken);
-
-    if (userToken) {
-      const decodedToken = jwt.verify(userToken, "TokenSecret"); // Replace "TokenSecret" with your actual secret
-      setUserData(decodedToken);
-      setIsLoggedIn(true);
-    } else {
-      console.log("Invalid userToken");
-      // logout();
-    }
-  }, []);
-
-  const logout = () => {
-    localStorage.removeItem("userToken");
-    setIsLoggedIn(false);
-    setUserData(null);
-  };
 
   const usersByRole = async (token, role) => {
     try {
@@ -172,9 +152,7 @@ export function AuthProvider({ children }) {
     forgetPassword,
     forgetPasswordRes,
 
-    isLoggedIn,
-    userData,
-    logout,
+
   };
 
   return (
