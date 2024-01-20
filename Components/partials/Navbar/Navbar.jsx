@@ -62,6 +62,7 @@ const Navbar = () => {
               <NavList href={"/contact"}>CONTACT US</NavList>
               <NavList href={"/faq"}>FAQ</NavList>
               <NavList href={"/seller"}>BECOME A SELLER</NavList>
+              <NavList href={"/product"}>Add Product</NavList>
             </ul>
           </div>
         </div>

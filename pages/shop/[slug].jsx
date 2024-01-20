@@ -144,7 +144,7 @@ const Product = () => {
               <p className="fw-semibold">{product?.description}</p>
               <div className="d-flex align-items-center col-md-5 fw-semibold my-2">
                 Size:
-                <select class="form-select mx-2 text-sm">
+                <select className="form-select mx-2 text-sm">
                   <option selected>Size</option>
                   {product?.size?.map((size) => {
                     return <option value={size}>{size.toUpperCase()}</option>;
@@ -157,7 +157,7 @@ const Product = () => {
                   min={1}
                   type="number"
                   id="typeNumber"
-                  class="form-control mx-2 text-sm"
+                  className="form-control mx-2 text-sm"
                   placeholder="1"
                 />
               </div>
@@ -173,7 +173,7 @@ const Product = () => {
                 })}
               </div>
               <button className="btn btn-moda col-md-5 my-3">
-                Add To Cart <i class="fa fa-cart-plus"></i>
+                Add To Cart <i className="fa fa-cart-plus"></i>
               </button>
 
               <div>
@@ -212,13 +212,13 @@ const Product = () => {
           </div>
           <div className="col-md-12 my-5">
             <ul
-              class="nav nav-tabs justify-content-center"
+              className="nav nav-tabs justify-content-center"
               id="ex1"
               role="tablist"
             >
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link active"
+                  className="nav-link active"
                   id="ex1-tab-1"
                   data-mdb-toggle="tab"
                   href="#ex1-tabs-1"
@@ -230,9 +230,9 @@ const Product = () => {
                 </a>
               </li>
 
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   id="ex1-tab-4"
                   data-mdb-toggle="tab"
                   href="#ex1-tabs-4"
@@ -243,9 +243,9 @@ const Product = () => {
                   Gallery
                 </a>
               </li>
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   id="ex1-tab-2"
                   data-mdb-toggle="tab"
                   href="#ex1-tabs-2"
@@ -256,9 +256,9 @@ const Product = () => {
                   Shipping & Returns
                 </a>
               </li>
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   id="ex1-tab-3"
                   data-mdb-toggle="tab"
                   href="#ex1-tabs-3"
@@ -272,11 +272,11 @@ const Product = () => {
             </ul>
 
             <div
-              class="tab-content border d-flex justify-content-center p-5"
+              className="tab-content border d-flex justify-content-center p-5"
               id="ex1-content"
             >
               <div
-                class="tab-pane fade show active"
+                className="tab-pane fade show active"
                 id="ex1-tabs-1"
                 role="tabpanel"
                 aria-labelledby="ex1-tab-1"
@@ -341,7 +341,7 @@ const Product = () => {
                 </p>
               </div>
               <div
-                class="tab-pane fade "
+                className="tab-pane fade "
                 id="ex1-tabs-2"
                 role="tabpanel"
                 aria-labelledby="ex1-tab-2"
@@ -358,7 +358,7 @@ const Product = () => {
                 </p>
               </div>
               <div
-                class="tab-pane fade "
+                className="tab-pane fade "
                 id="ex1-tabs-3"
                 role="tabpanel"
                 aria-labelledby="ex1-tab-3"
@@ -426,7 +426,7 @@ const Product = () => {
                 </div>
               </div>
               <div
-                class="tab-pane fade "
+                className="tab-pane fade "
                 id="ex1-tabs-4"
                 role="tabpanel"
                 aria-labelledby="ex1-tab-4"

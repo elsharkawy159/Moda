@@ -181,7 +181,7 @@ const Shop = () => {
                     className="btn btn-moda w-100 rounded-0 rounded-bottom my-1"
                     disabled
                   >
-                    <i class="fa-solid fa-spinner fa-spin fs-2 text-main"></i>
+                    <i className="fa-solid fa-spinner fa-spin fs-2 text-main"></i>
                   </button>
                 ) : (
                   <>
@@ -222,7 +222,7 @@ const Shop = () => {
             <div className="row h-100 text-center pb-5">
               {productData.productsCount === 0 ? (
                 <h3 className="text-muted fw-light">
-                  No Products Found <i class="fa-solid fa-ban"></i>
+                  No Products Found <i className="fa-solid fa-ban"></i>
                 </h3>
               ) : (
                 productData?.products?.map((product, index) => (

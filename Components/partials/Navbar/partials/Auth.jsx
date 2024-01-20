@@ -1,4 +1,3 @@
-import Image from "next/image.js";
 import Link from "next/link.js";
 import React, { useState } from "react";
 import NavIcon from "./NavIcon.jsx";

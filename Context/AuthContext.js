@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import BaseURL from "./BaseURL.js";
+import jwt from "jsonwebtoken";
 
 const AuthContext = createContext();
 
@@ -10,6 +11,9 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
+
   const [usersByRoleRes, setUsersByRoleRes] = useState([]);
   const [signUpRes, setSignUpRes] = useState([]);
   const [signInRes, setSignInRes] = useState([]);
@@ -17,6 +21,26 @@ export function AuthProvider({ children }) {
   const [becomePartnerRes, setBecomePartnerRes] = useState([]);
   const [sendCodeRes, setSendCodeRes] = useState([]);
   const [forgetPasswordRes, setForgetPasswordRes] = useState([]);
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("userToken");
+    const parsedToken = JSON.parse(userToken);
+
+    if (userToken) {
+      const decodedToken = jwt.verify(userToken, "TokenSecret"); // Replace "TokenSecret" with your actual secret
+      setUserData(decodedToken);
+      setIsLoggedIn(true);
+    } else {
+      console.log("Invalid userToken");
+      // logout();
+    }
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("userToken");
+    setIsLoggedIn(false);
+    setUserData(null);
+  };
 
   const usersByRole = async (token, role) => {
     try {
@@ -52,7 +76,11 @@ export function AuthProvider({ children }) {
       setIsLoading(true);
       const { data } = await axios.post(`${BaseURL}/auth/signin`, credentials);
       setSignInRes(data);
+
       console.log(data);
+      if (data.success) {
+        localStorage.setItem("userToken", JSON.stringify(data.refresh_token));
+      }
     } catch (error) {
       setSignInRes(error?.response?.data);
       console.log(error?.response?.data);
@@ -143,6 +171,10 @@ export function AuthProvider({ children }) {
 
     forgetPassword,
     forgetPasswordRes,
+
+    isLoggedIn,
+    userData,
+    logout,
   };
 
   return (

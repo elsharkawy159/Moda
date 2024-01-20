@@ -37,13 +37,13 @@ const auth = () => {
         <div className="row py-5 border-bottom">
           <div className="col-md-6 m-auto">
             <ul
-              class="nav nav-pills nav-justified mb-3"
+              className="nav nav-pills nav-justified mb-3"
               id="ex1"
               role="tablist"
             >
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link active"
+                  className="nav-link active"
                   id="tab-login"
                   data-mdb-pill-init
                   href="#pills-login"
@@ -54,9 +54,9 @@ const auth = () => {
                   Login
                 </a>
               </li>
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   id="tab-register"
                   data-mdb-pill-init
                   href="#pills-register"
@@ -69,50 +69,50 @@ const auth = () => {
               </li>
             </ul>
 
-            <div class="tab-content">
+            <div className="tab-content">
               <div
-                class="tab-pane fade show active"
+                className="tab-pane fade show active"
                 id="pills-login"
                 role="tabpanel"
                 aria-labelledby="tab-login"
               >
                 <form onSubmit={handleSubmit}>
-                  <div class="text-center mb-3">
+                  <div className="text-center mb-3">
                     <p>Sign in with:</p>
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-facebook-f"></i>
+                      <i className="fab fa-facebook-f"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-google"></i>
+                      <i className="fab fa-google"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-twitter"></i>
+                      <i className="fab fa-twitter"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-github"></i>
+                      <i className="fab fa-github"></i>
                     </button>
                   </div>
 
-                  <p class="text-center">Or</p>
+                  <p className="text-center">Or</p>
 
                   {signInRes.success === true ? (
                     <div className="bg-success bg-opacity-100 text-center text-light p-1 rounded">
@@ -127,7 +127,7 @@ const auth = () => {
                   <input
                     type="email"
                     id="loginName"
-                    class="form-control mt-4"
+                    className="form-control mt-4"
                     placeholder="Email or username"
                     name="email"
                     onChange={handleChange}
@@ -135,7 +135,7 @@ const auth = () => {
                     value={values.email}
                   />
                   {formik.touched.email && formik.errors.email ? (
-                    <div className="bg-danger bg-opacity-25 text-center text-danger rounded">
+                    <div className="bg-danger bg-opacity-25 text-center text-danger rounded mt-1">
                       {formik.errors.email}
                     </div>
                   ) : null}
@@ -147,49 +147,51 @@ const auth = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.password}
-                    class="form-control mt-4"
+                    className="form-control mt-4"
                     placeholder="Password"
                   />
                   {formik.touched.password && formik.errors.password ? (
-                    <div className="bg-danger bg-opacity-25 text-center text-danger rounded">
+                    <div className="bg-danger bg-opacity-25 text-center text-danger rounded mt-1">
                       {formik.errors.password}
                     </div>
                   ) : null}
 
-                  <div class="row my-4">
-                    <div class="col-md-6 d-flex justify-content-center">
-                      <div class="form-check mb-3 mb-md-0">
+                  <div className="row my-4">
+                    <div className="col-md-6 d-flex justify-content-center">
+                      <div className="form-check mb-3 mb-md-0">
                         <input
-                          class="form-check-input"
+                          className="form-check-input"
                           type="checkbox"
                           value=""
                           id="loginCheck"
-                          checked
                         />
-                        <label class="form-check-label" for="loginCheck">
+                        <label
+                          className="form-check-label"
+                          htmlFor="loginCheck"
+                        >
                           Remember me
                         </label>
                       </div>
                     </div>
 
-                    <div class="col-md-6 d-flex justify-content-center">
+                    <div className="col-md-6 d-flex justify-content-center">
                       <a href="#!">Forgot password?</a>
                     </div>
                   </div>
                   {isLoading ? (
-                    <button class="btn btn-moda btn-block mb-4">
-                      <i class="fa-solid fa-spinner fa-spin text-light"></i>
+                    <button className="btn btn-moda btn-block mb-4">
+                      <i className="fa-solid fa-spinner fa-spin text-light"></i>
                     </button>
                   ) : (
                     <button
                       type="submit"
                       disabled={isLoading}
-                      class="btn btn-moda btn-block mb-4"
+                      className="btn btn-moda btn-block mb-4"
                     >
                       Sign in
                     </button>
                   )}
-                  <div class="text-center">
+                  <div className="text-center">
                     <p>
                       Not a member? <a href="#!">Register</a>
                     </p>
@@ -197,110 +199,116 @@ const auth = () => {
                 </form>
               </div>
               <div
-                class="tab-pane fade"
+                className="tab-pane fade"
                 id="pills-register"
                 role="tabpanel"
                 aria-labelledby="tab-register"
               >
                 <form>
-                  <div class="text-center mb-3">
+                  <div className="text-center mb-3">
                     <p>Sign up with:</p>
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-facebook-f"></i>
+                      <i className="fab fa-facebook-f"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-google"></i>
+                      <i className="fab fa-google"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-twitter"></i>
+                      <i className="fab fa-twitter"></i>
                     </button>
 
                     <button
                       data-mdb-ripple-init
                       type="button"
-                      class="btn btn-secondary btn-floating mx-1"
+                      className="btn btn-secondary btn-floating mx-1"
                     >
-                      <i class="fab fa-github"></i>
+                      <i className="fab fa-github"></i>
                     </button>
                   </div>
 
-                  <p class="text-center">or:</p>
+                  <p className="text-center">or:</p>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="text" id="registerName" class="form-control" />
-                    <label class="form-label" for="registerName">
+                  <div data-mdb-input-init className="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="registerName"
+                      className="form-control"
+                    />
+                    <label className="form-label" htmlFor="registerName">
                       Name
                     </label>
                   </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
+                  <div data-mdb-input-init className="form-outline mb-4">
                     <input
                       type="text"
                       id="registerUsername"
-                      class="form-control"
+                      className="form-control"
                     />
-                    <label class="form-label" for="registerUsername">
+                    <label className="form-label" htmlFor="registerUsername">
                       Username
                     </label>
                   </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
+                  <div data-mdb-input-init className="form-outline mb-4">
                     <input
                       type="email"
                       id="registerEmail"
-                      class="form-control"
+                      className="form-control"
                     />
-                    <label class="form-label" for="registerEmail">
+                    <label className="form-label" htmlFor="registerEmail">
                       Email
                     </label>
                   </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
+                  <div data-mdb-input-init className="form-outline mb-4">
                     <input
                       type="password"
                       id="registerPassword"
-                      class="form-control"
+                      className="form-control"
                     />
-                    <label class="form-label" for="registerPassword">
+                    <label className="form-label" htmlFor="registerPassword">
                       Password
                     </label>
                   </div>
 
-                  <div data-mdb-input-init class="form-outline mb-4">
+                  <div data-mdb-input-init className="form-outline mb-4">
                     <input
                       type="password"
                       id="registerRepeatPassword"
-                      class="form-control"
+                      className="form-control"
                     />
-                    <label class="form-label" for="registerRepeatPassword">
+                    <label
+                      className="form-label"
+                      htmlFor="registerRepeatPassword"
+                    >
                       Repeat password
                     </label>
                   </div>
 
-                  <div class="form-check d-flex justify-content-center mb-4">
+                  <div className="form-check d-flex justify-content-center mb-4">
                     <input
-                      class="form-check-input me-2"
+                      className="form-check-input me-2"
                       type="checkbox"
                       value=""
                       id="registerCheck"
-                      checked
                       aria-describedby="registerCheckHelpText"
                     />
-                    <label class="form-check-label" for="registerCheck">
+                    <label className="form-check-label" htmlFor="registerCheck">
                       I have read and agree to the terms
                     </label>
                   </div>
@@ -308,7 +316,7 @@ const auth = () => {
                   <button
                     data-mdb-ripple-init
                     type="submit"
-                    class="btn btn-moda btn-block mb-3"
+                    className="btn btn-moda btn-block mb-3"
                   >
                     Sign Up
                   </button>

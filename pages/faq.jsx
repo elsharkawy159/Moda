@@ -10,12 +10,12 @@ const faq = () => {
       />
       <div className="container">
         <div className="row py-5">
-          <div class="accordion col-md-6" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
+          <div className="accordion col-md-6" id="accordionExample">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingOne">
                 <button
                   data-mdb-collapse-init
-                  class="accordion-button"
+                  className="accordion-button"
                   type="button"
                   data-mdb-toggle="collapse"
                   data-mdb-target="#collapseOne"
@@ -27,11 +27,11 @@ const faq = () => {
               </h2>
               <div
                 id="collapseOne"
-                class="accordion-collapse collapse show"
+                className="accordion-collapse collapse show"
                 aria-labelledby="headingOne"
                 data-mdb-parent="#accordionExample"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <strong>This is the first item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
                   appropriate classes that we use to style each element. These
@@ -44,11 +44,11 @@ const faq = () => {
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingTwo">
                 <button
                   data-mdb-collapse-init
-                  class="accordion-button collapsed"
+                  className="accordion-button collapsed"
                   type="button"
                   data-mdb-toggle="collapse"
                   data-mdb-target="#collapseTwo"
@@ -60,11 +60,11 @@ const faq = () => {
               </h2>
               <div
                 id="collapseTwo"
-                class="accordion-collapse collapse"
+                className="accordion-collapse collapse"
                 aria-labelledby="headingTwo"
                 data-mdb-parent="#accordionExample"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <strong>This is the second item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
                   appropriate classes that we use to style each element. These
@@ -77,11 +77,11 @@ const faq = () => {
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingThree">
                 <button
                   data-mdb-collapse-init
-                  class="accordion-button collapsed"
+                  className="accordion-button collapsed"
                   type="button"
                   data-mdb-toggle="collapse"
                   data-mdb-target="#collapseThree"
@@ -93,11 +93,11 @@ const faq = () => {
               </h2>
               <div
                 id="collapseThree"
-                class="accordion-collapse collapse"
+                className="accordion-collapse collapse"
                 aria-labelledby="headingThree"
                 data-mdb-parent="#accordionExample"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <strong>This is the third item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
                   appropriate classes that we use to style each element. These
@@ -110,11 +110,11 @@ const faq = () => {
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFour">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingFour">
                 <button
                   data-mdb-collapse-init
-                  class="accordion-button collapsed"
+                  className="accordion-button collapsed"
                   type="button"
                   data-mdb-toggle="collapse"
                   data-mdb-target="#collapseFour"
@@ -126,11 +126,11 @@ const faq = () => {
               </h2>
               <div
                 id="collapseFour"
-                class="accordion-collapse collapse"
+                className="accordion-collapse collapse"
                 aria-labelledby="headingFour"
                 data-mdb-parent="#accordionExample"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <strong>This is the third item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
                   appropriate classes that we use to style each element. These
@@ -143,11 +143,11 @@ const faq = () => {
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFive">
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="headingFive">
                 <button
                   data-mdb-collapse-init
-                  class="accordion-button collapsed"
+                  className="accordion-button collapsed"
                   type="button"
                   data-mdb-toggle="collapse"
                   data-mdb-target="#collapseFive"
@@ -159,11 +159,11 @@ const faq = () => {
               </h2>
               <div
                 id="collapseFive"
-                class="accordion-collapse collapse"
+                className="accordion-collapse collapse"
                 aria-labelledby="headingFive"
                 data-mdb-parent="#accordionExample"
               >
-                <div class="accordion-body">
+                <div className="accordion-body">
                   <strong>This is the third item's accordion body.</strong> It
                   is hidden by default, until the collapse plugin adds the
                   appropriate classes that we use to style each element. These

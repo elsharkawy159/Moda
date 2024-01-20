@@ -12,47 +12,47 @@ const contact = () => {
           </div>
           <div className="col-md-6">
             <form className="w-100">
-              <div class="mb-4">
+              <div className="mb-4">
                 <input
                   type="text"
                   id="form4Example1"
-                  class="form-control border"
+                  className="form-control border"
                   placeholder="Name"
                 />
               </div>
 
-              <div class="mb-4">
+              <div className="mb-4">
                 <input
                   type="email"
                   id="form4Example2"
-                  class="form-control border"
+                  className="form-control border"
                   placeholder="Email address"
                 />
               </div>
 
-              <div class="mb-4">
+              <div className="mb-4">
                 <textarea
-                  class="form-control border"
+                  className="form-control border"
                   id="form4Example3"
                   rows="4"
                   placeholder="Message"
                 ></textarea>
               </div>
 
-              <div class="form-check d-flex justify-content-center mb-4">
+              <div className="form-check d-flex justify-content-center mb-4">
                 <input
-                  class="form-check-input me-2"
+                  className="form-check-input me-2"
                   type="checkbox"
                   value=""
                   id="form4Example4"
                   checked
                 />
-                <label class="form-check-label" for="form4Example4">
+                <label className="form-check-label" for="form4Example4">
                   Send me a copy of this message
                 </label>
               </div>
 
-              <button type="button" class="btn btn-primary btn-block mb-4">
+              <button type="button" className="btn btn-primary btn-block mb-4">
                 Send
               </button>
             </form>
