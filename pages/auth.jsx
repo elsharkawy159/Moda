@@ -26,7 +26,7 @@ const auth = () => {
     }),
     onSubmit: (values) => {
       signIn(values);
-      console.log(values);
+      // console.log(values);
     },
   });
   const { handleBlur, handleChange, handleSubmit, values } = formik;

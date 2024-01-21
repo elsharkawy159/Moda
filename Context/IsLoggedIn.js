@@ -10,18 +10,13 @@ function IsLoggedIn() {
     const tokenSecret = "TokenSecret";
 
     try {
-      if (userToken) {
-        const decodedToken = jwt.verify(userToken, tokenSecret);
-        console.log(decodedToken);
-        setUserData(decodedToken);
-        setIsLoggedIn(true);
-      } else {
-        console.log("Invalid userToken");
-        // logout();
-      }
+      const decodedToken = jwt.verify(userToken, tokenSecret);
+      console.log(decodedToken);
+      setUserData(decodedToken);
+      setIsLoggedIn(true);
     } catch (error) {
-      console.error("Error verifying token:", error.message);
-      logout();
+      console.error("Error verifying tokenssssssssssss:", error.message);
+      // logout();
     }
   }, []);
 

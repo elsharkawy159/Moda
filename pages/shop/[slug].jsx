@@ -19,7 +19,7 @@ const Product = () => {
   }, [slug]);
 
   const { product } = productDetailsData;
-  console.log(product);
+  // console.log(product);
 
   const settings = {
     dots: false,

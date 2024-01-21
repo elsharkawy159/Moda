@@ -4,7 +4,6 @@ import ServicesSlider from "../Components/partials/Sliders/ServicesSlider.jsx";
 import MainSlider from "../Components/partials/Sliders/MainSlider.jsx";
 import CategoriesSlider from "../Components/partials/Sliders/CategoriesSlider.jsx";
 import BrandSlider from "../Components/partials/Sliders/BrandsSlider.jsx";
-import { useProduct } from "../Context/ProductContext.js";
 import TrendingNow from "../Components/partials/ProductSliders/TrendingNow.jsx";
 import FeaturedFootwear from "../Components/partials/ProductSliders/FeaturedFootwear.jsx";
 import BagsAndAccessories from "../Components/partials/ProductSliders/BagsAndAccessories.jsx";
@@ -12,8 +11,6 @@ import BagsAndAccessories from "../Components/partials/ProductSliders/BagsAndAcc
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const { productData } = useProduct();
-  console.log(productData.products);
   return (
     <>
       <Head>

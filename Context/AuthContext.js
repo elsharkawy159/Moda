@@ -11,8 +11,6 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
 
-
-
   const [usersByRoleRes, setUsersByRoleRes] = useState([]);
   const [signUpRes, setSignUpRes] = useState([]);
   const [signInRes, setSignInRes] = useState([]);
@@ -20,7 +18,6 @@ export function AuthProvider({ children }) {
   const [becomePartnerRes, setBecomePartnerRes] = useState([]);
   const [sendCodeRes, setSendCodeRes] = useState([]);
   const [forgetPasswordRes, setForgetPasswordRes] = useState([]);
-
 
   const usersByRole = async (token, role) => {
     try {
@@ -57,7 +54,7 @@ export function AuthProvider({ children }) {
       const { data } = await axios.post(`${BaseURL}/auth/signin`, credentials);
       setSignInRes(data);
 
-      console.log(data);
+      // console.log(data);
       if (data.success) {
         localStorage.setItem("userToken", JSON.stringify(data.refresh_token));
       }
@@ -151,8 +148,6 @@ export function AuthProvider({ children }) {
 
     forgetPassword,
     forgetPasswordRes,
-
-
   };
 
   return (

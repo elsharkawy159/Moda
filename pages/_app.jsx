@@ -22,6 +22,7 @@ export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
 
   IsLoggedIn();
+  
 
   TopBarProgress.config({
     barColors: {

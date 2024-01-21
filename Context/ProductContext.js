@@ -27,7 +27,7 @@ export function ProductProvider({ children }) {
 
       const { data } = await axios.get(`${BaseURL}/product/?${query}`);
       setProductData(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       setIsLoading(false);
       return
@@ -43,7 +43,7 @@ export function ProductProvider({ children }) {
       setIsLoading(true);
       const { data } = await axios.get(`${BaseURL}/product/${productSlug}`);
       setProductDetailsData(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       setProductDetailsData(error?.response?.data);
     } finally {
