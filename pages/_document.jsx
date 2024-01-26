@@ -26,8 +26,12 @@ export default function Document() {
           integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
           crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="/css/mdb.min.css" />
+
       </Head>
       <body>
+        <script src="/js/mdb.min.js"/>
+        <script src="/js/bootstrap.min.js"/>
         <Main />
         <NextScript />
       </body>

@@ -94,7 +94,8 @@ const ProductCard = ({ product, isLoading }) => {
             </p>
             <h2 className="title">
               <Link href={`/shop/${product.slug}`}>
-                {product.name.split(" ").slice(0, 3).join(" ")}
+                {product.name.split(" ").slice(0, 3).join(" ") +
+                  (product.stock < 10 ? ` (${product.stock})` : "")}
               </Link>
             </h2>
             <div className={`price ${product.discount ? "text-danger" : ""}`}>

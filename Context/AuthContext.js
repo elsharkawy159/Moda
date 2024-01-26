@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import BaseURL from "./BaseURL.js";
-import jwt from "jsonwebtoken";
 
 const AuthContext = createContext();
 
@@ -56,7 +55,7 @@ export function AuthProvider({ children }) {
 
       // console.log(data);
       if (data.success) {
-        localStorage.setItem("userToken", JSON.stringify(data.refresh_token));
+        localStorage.setItem("userToken", JSON.stringify(data.access_token));
       }
     } catch (error) {
       setSignInRes(error?.response?.data);

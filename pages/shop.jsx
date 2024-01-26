@@ -94,7 +94,7 @@ const Shop = () => {
         }
       />
       <div className="container">
-        <div className="row pb-5">
+        <div className="row pb-5 ">
           <div className="col-md-3 border border-top-0">
             <form
               onSubmit={(event) => event.preventDefault()}
@@ -208,7 +208,7 @@ const Shop = () => {
             <div className="row">
               <select
                 id="category"
-                className="form-select w-25 m-3 mb-0"
+                className="form-select w-25 m-3 mb-2"
                 onChange={handleFilterChange}
                 name="sort"
               >

@@ -8,6 +8,7 @@ function IsLoggedIn() {
   useEffect(() => {
     const userToken = localStorage.getItem("userToken");
     const tokenSecret = "TokenSecret";
+    console.log(userToken);
 
     try {
       const decodedToken = jwt.verify(userToken, tokenSecret);
@@ -15,7 +16,8 @@ function IsLoggedIn() {
       setUserData(decodedToken);
       setIsLoggedIn(true);
     } catch (error) {
-      console.error("Error verifying tokenssssssssssss:", error.message);
+      console.error("Error verifying token:", error.message);
+      console.log(userToken);
       // logout();
     }
   }, []);

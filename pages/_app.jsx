@@ -10,7 +10,7 @@ import { ProductProvider } from "../Context/ProductContext.js";
 import { ReviewProvider } from "../Context/ReviewsContext.js";
 import { SubcategoryProvider } from "../Context/SubCategoryContext.js";
 import { Router } from "next/router.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
@@ -20,8 +20,6 @@ import IsLoggedIn from "../Context/IsLoggedIn.js";
 
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
-
-  IsLoggedIn();
 
   TopBarProgress.config({
     barColors: {
@@ -38,6 +36,8 @@ export default function App({ Component, pageProps }) {
   Router.events.on("routeChangeComplete", () => {
     setProgress(false);
   });
+
+  // IsLoggedIn();
 
   return (
     <>
