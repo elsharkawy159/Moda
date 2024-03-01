@@ -9,7 +9,7 @@ export function useCart() {
 }
 
 export function CartProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingCart, setIsLoadingCart] = useState(false);
   const [cartData, setCartData] = useState([]);
   const [addToCartRes, setAddToCartRes] = useState([]);
   const [deleteFromCartRes, setDeleteFromCartRes] = useState([]);
@@ -17,62 +17,69 @@ export function CartProvider({ children }) {
 
   const getUserCart = async (token) => {
     try {
-      setIsLoading(true);
+      setIsLoadingCart(true);
       const { data } = await axios.get(`${BaseURL}/cart`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Barer_${token}` },
       });
       setCartData(data);
+      console.log(data);
     } catch (error) {
       setCartData(error?.response?.data);
     } finally {
-      setIsLoading(false);
+      setIsLoadingCart(false);
     }
   };
 
   const addToCart = async (cartItemData, token) => {
     try {
-      setIsLoading(true);
+      setIsLoadingCart(true);
       const { data } = await axios.post(`${BaseURL}/cart`, cartItemData, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Barer_${token}` },
       });
       setAddToCartRes(data);
+      getUserCart(JSON.parse(localStorage.getItem("userToken")));
     } catch (error) {
       setAddToCartRes(error?.response?.data);
+      console.log(error);
     } finally {
-      setIsLoading(false);
+      setIsLoadingCart(false);
     }
   };
 
   const deleteFromCart = async (cartItemId, token) => {
     try {
-      setIsLoading(true);
+      setIsLoadingCart(true);
       const { data } = await axios.patch(`${BaseURL}/cart/remove`, cartItemId, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Barer_${token}` },
       });
       setDeleteFromCartRes(data);
+      getUserCart(JSON.parse(localStorage.getItem("userToken")));
     } catch (error) {
       setDeleteFromCartRes(error?.response?.data);
+      console.log(data);
     } finally {
-      setIsLoading(false);
+      setIsLoadingCart(false);
     }
   };
 
   const clearCart = async (token) => {
+    console.log(token);
     try {
-      setIsLoading(true);
+      setIsLoadingCart(true);
       const { data } = await axios.patch(`${BaseURL}/cart/clear`, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Barer_${token}` },
       });
       setClearCartRes(data);
     } catch (error) {
       setClearCartRes(error?.response?.data);
+      console.log(error?.response?.data);
     } finally {
-      setIsLoading(false);
+      setIsLoadingCart(false);
     }
   };
 
   const cartContextValue = {
-    isLoading,
+    isLoadingCart,
     cartData,
     addToCartRes,
     deleteFromCartRes,

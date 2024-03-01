@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import SliderSettings from "../features/SliderSettings.jsx";
 import ProductCard from "./ProductCard/ProductCard.jsx";
+import { useCart } from "../../Context/CartContext.js";
+import { useAuth } from "../../Context/AuthContext.js";
 
 const ProductsSliderComponent = ({
   isLoading,
@@ -17,6 +19,8 @@ const ProductsSliderComponent = ({
     }
     return "";
   };
+  const { addToCart, isLoadingCart } = useCart();
+  const { isLoggedIn } = useAuth();
 
   const tabId1 = makeValidId(tabTitle1);
   const tabId2 = makeValidId(tabTitle2);
@@ -71,7 +75,13 @@ const ProductsSliderComponent = ({
               {productsData1?.map((product, index) => {
                 return (
                   <div className="col-md-3" key={index}>
-                    <ProductCard product={product} isLoading={isLoading} />
+                    <ProductCard
+                      product={product}
+                      isLoading={isLoading}
+                      addToCart={addToCart}
+                      isLoadingCart={isLoadingCart}
+                      isLoggedIn={isLoggedIn}
+                    />
                   </div>
                 );
               })}
@@ -89,7 +99,13 @@ const ProductsSliderComponent = ({
               {productsData2?.map((product, index) => {
                 return (
                   <div className="col-md-3" key={index}>
-                    <ProductCard product={product} isLoading={isLoading} />
+                    <ProductCard
+                      product={product}
+                      isLoading={isLoading}
+                      addToCart={addToCart}
+                      isLoadingCart={isLoadingCart}
+                      isLoggedIn={isLoggedIn}
+                    />
                   </div>
                 );
               })}

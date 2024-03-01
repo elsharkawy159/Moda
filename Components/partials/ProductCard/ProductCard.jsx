@@ -1,7 +1,20 @@
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import React, { useEffect } from "react";
 
-const ProductCard = ({ product, isLoading }) => {
+const ProductCard = ({
+  product,
+  isLoading,
+  addToCart,
+  isLoadingCart,
+  isLoggedIn,
+}) => {
+  const handleAddCart = (id) => {
+    if (isLoggedIn) {
+      const token = JSON.parse(localStorage.getItem("userToken"));
+      addToCart({ productId: id, quantity: 1 }, token);
+    }
+  };
+
   return (
     <>
       {!product || isLoading ? (
@@ -84,7 +97,7 @@ const ProductCard = ({ product, isLoading }) => {
                   key={index}
                   title={product.rating}
                   className={`fas fa-star${
-                    index < product?.rating?.toFixed() ? "" : " disable"
+                    index < product?.rating?.toFixed(2) ? "" : " disable"
                   }`}
                 ></li>
               ))}
@@ -102,7 +115,7 @@ const ProductCard = ({ product, isLoading }) => {
               <sup>
                 <small className="text-dark">EGP</small>
               </sup>
-              {product?.finalPrice?.toFixed()}
+              {product?.finalPrice?.toFixed(2)}
               <sup>
                 <small>00</small>
               </sup>
@@ -112,9 +125,23 @@ const ProductCard = ({ product, isLoading }) => {
               <span className="product-like-icon pointer">
                 <i className="fas fa-heart"></i>
               </span>
-              <span className="add-to-cart pointer">
-                <i className="fa fa-shopping-bag"></i>ADD TO CART
-              </span>
+              {isLoggedIn ? (
+                <span
+                  className="add-to-cart pointer"
+                  onClick={() => {
+                    handleAddCart(product._id);
+                  }}
+                >
+                  <i className="fa fa-shopping-bag"></i>
+                  {isLoadingCart ? "ADDING..." : "ADD TO CART"}
+                </span>
+              ) : (
+                <Link href={"/login"} className="add-to-cart pointer">
+                  <i className="fa fa-shopping-bag"></i>
+                  ADD TO CART
+                </Link>
+              )}
+
               <span className="product-compare-icon pointer">
                 <i className="fas fa-random"></i>
               </span>

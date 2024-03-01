@@ -3,11 +3,11 @@
   --secondary-color: #f9bea5;
   --dark-color: #2b2b2b;
 }
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: all 0.3s ease; /* Apply transition to all properties */
 }
 
 body {

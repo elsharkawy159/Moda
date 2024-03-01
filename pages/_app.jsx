@@ -10,13 +10,12 @@ import { ProductProvider } from "../Context/ProductContext.js";
 import { ReviewProvider } from "../Context/ReviewsContext.js";
 import { SubcategoryProvider } from "../Context/SubCategoryContext.js";
 import { Router } from "next/router.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@/styles/globals.css";
 import "@/styles/mediaQuery.css";
 import "../public/Components.style/style.css";
-import IsLoggedIn from "../Context/IsLoggedIn.js";
 
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);
@@ -37,13 +36,11 @@ export default function App({ Component, pageProps }) {
     setProgress(false);
   });
 
-  // IsLoggedIn();
-
   return (
     <>
       <AuthProvider>
-        <BrandProvider>
-          <CartProvider>
+        <CartProvider>
+          <BrandProvider>
             <CategoryProvider>
               <CouponProvider>
                 <OrderProvider>
@@ -60,8 +57,8 @@ export default function App({ Component, pageProps }) {
                 </OrderProvider>
               </CouponProvider>
             </CategoryProvider>
-          </CartProvider>
-        </BrandProvider>
+          </BrandProvider>
+        </CartProvider>
       </AuthProvider>
     </>
   );

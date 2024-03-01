@@ -5,8 +5,13 @@ import { useProduct } from "../Context/ProductContext.js";
 import { useCategory } from "../Context/CetegoryContext.js";
 import FilterOption from "../Components/features/FilterOption.jsx";
 import ColorRadio from "../Components/features/ColorRadio.jsx";
+import { useCart } from "../Context/CartContext.js";
+import { useAuth } from "../Context/AuthContext.js";
 
 const Shop = () => {
+  const { addToCart, isLoadingCart } = useCart();
+  const { isLoggedIn } = useAuth();
+
   const { getProducts, productData, isLoading } = useProduct();
   const { categoryData } = useCategory();
   const [filters, setFilters] = useState({
@@ -227,7 +232,13 @@ const Shop = () => {
               ) : (
                 productData?.products?.map((product, index) => (
                   <div className="col-lg-3 col-md-6 col-6" key={index}>
-                    <ProductCard product={product} isLoading={isLoading} />
+                    <ProductCard
+                      product={product}
+                      isLoading={isLoading}
+                      addToCart={addToCart}
+                      isLoadingCart={isLoadingCart}
+                      isLoggedIn={isLoggedIn}
+                    />
                   </div>
                 ))
               )}

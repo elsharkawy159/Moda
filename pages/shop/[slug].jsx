@@ -90,7 +90,7 @@ const Product = () => {
                     key={index}
                     title="2"
                     className={`fas fa-star${
-                      index < 2 || product?.rating?.toFixed() ? "" : " disable"
+                      index < 2 || product?.rating?.toFixed(2) ? "" : " disable"
                     }`}
                   ></li>
                 ))}
@@ -104,7 +104,7 @@ const Product = () => {
                 <sup>
                   <small>EGP</small>
                 </sup>
-                {product?.finalPrice?.toFixed()}
+                {product?.finalPrice?.toFixed(2)}
                 <sup>
                   <small>00</small>
                 </sup>
@@ -374,7 +374,7 @@ const Product = () => {
                           key={index}
                           title="4"
                           className={`fas fa-star${
-                            index < 4 || product?.rating?.toFixed()
+                            index < 4 || product?.rating?.toFixed(2)
                               ? ""
                               : " disable"
                           }`}
@@ -404,7 +404,7 @@ const Product = () => {
                           key={index}
                           title="4"
                           className={`fas fa-star${
-                            index < 4 || product?.rating?.toFixed()
+                            index < 4 || product?.rating?.toFixed(2)
                               ? ""
                               : " disable"
                           }`}
