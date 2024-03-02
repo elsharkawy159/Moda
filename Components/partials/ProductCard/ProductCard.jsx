@@ -97,7 +97,7 @@ const ProductCard = ({
                   key={index}
                   title={product.rating}
                   className={`fas fa-star${
-                    index < product?.rating?.toFixed(2) ? "" : " disable"
+                    index < product?.rating?.toFixed() ? "" : " disable"
                   }`}
                 ></li>
               ))}
@@ -115,7 +115,7 @@ const ProductCard = ({
               <sup>
                 <small className="text-dark">EGP</small>
               </sup>
-              {product?.finalPrice?.toFixed(2)}
+              {product?.finalPrice?.toFixed()}
               <sup>
                 <small>00</small>
               </sup>
@@ -133,7 +133,7 @@ const ProductCard = ({
                   }}
                 >
                   <i className="fa fa-shopping-bag"></i>
-                  {isLoadingCart ? "ADDING..." : "ADD TO CART"}
+                  ADD TO CART
                 </span>
               ) : (
                 <Link href={"/login"} className="add-to-cart pointer">

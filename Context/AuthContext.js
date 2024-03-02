@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import BaseURL from "./BaseURL.js";
+import showToast from "../public/js/alert.js";
 
 const AuthContext = createContext();
 
@@ -23,6 +24,7 @@ export function AuthProvider({ children }) {
     const userToken = localStorage.getItem("userToken");
     if (userToken) {
       setIsLoggedIn(true);
+      
     } else {
       setIsLoggedIn(false);
     }
@@ -72,6 +74,7 @@ export function AuthProvider({ children }) {
 
       // console.log(data);
       if (data.success) {
+        showToast("success", "Signed In Successfully");
         localStorage.setItem("userToken", JSON.stringify(data.refresh_token));
         localStorage.setItem("userName", JSON.stringify(data.user.userName));
         localStorage.setItem("email", JSON.stringify(data.user.email));
@@ -82,7 +85,7 @@ export function AuthProvider({ children }) {
 
         setTimeout(() => {
           window.location.href = "/";
-        }, 1000);
+        }, 750);
       }
     } catch (error) {
       setSignInRes(error?.response?.data);
