@@ -16,11 +16,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 900) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
-      } 
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <nav
         className={`main_nav navbar navbar-expand-lg navbar-light bg-light border-bottom ${
-          isScrolled ? "fixed-top shadow-sm" : ""
+          isScrolled ? "scrolled active" : ""
         }`}
       >
         <div className="container justify-content-between">
@@ -93,12 +93,10 @@ const Navbar = () => {
               <NavList href={"/contact"}>CONTACT US</NavList>
               <NavList href={"/faq"}>FAQ</NavList>
 
-              {isLoggedIn ? (
+              {isLoggedIn && (
                 <NavList href={"/product"}>
                   <span className="text-main">Add Product</span>
                 </NavList>
-              ) : (
-                <NavList href={"/seller"}>BECOME A SELLER</NavList>
               )}
             </ul>
           </div>

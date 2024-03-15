@@ -1,13 +1,12 @@
 :root {
   --main-color: #f6b69b;
-  --secondary-color: #f9bea5;
+  --secondary-color: #f19c78;
   --dark-color: #2b2b2b;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  transition: all 0.3s ease; /* Apply transition to all properties */
 }
 
 body {
@@ -82,7 +81,7 @@ a:hover i::after {
 }
 
 .text-sm {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .pointer {
@@ -135,7 +134,7 @@ a:hover i::after {
 .slick-next {
   width: 35px !important;
   height: 100% !important;
-  background: #99999929 !important;
+  background: hsla(0, 0%, 100%, 0) !important;
   transition: all 0.3s ease !important;
   opacity: 0 !important;
 }
@@ -201,7 +200,34 @@ a:hover i::after {
   --mdb-nav-tabs-link-active-border-color: var(--main-color);
 }
 
-input:focus {
-  border: 1px solid var(--main-color) !important;
-  box-shadow: 0px 0px 2px 0px var(--main-color) !important;
+.form-outline .form-control:focus ~ .form-notch .form-notch-trailing {
+  border-color: var(--main-color);
+  box-shadow: 1px 0 0 0 var(--main-color), 0 -1px 0 0 var(--main-color),
+    0 1px 0 0 var(--main-color);
+}
+
+.form-outline .form-control:focus ~ .form-notch .form-notch-leading {
+  border-color: var(--main-color);
+  box-shadow: -1px 0 0 0 var(--main-color), 0 -1px 0 0 var(--main-color),
+    0 1px 0 0 var(--main-color);
+}
+
+.form-outline .form-control:focus ~ .form-notch .form-notch-middle {
+  border-color: var(--main-color);
+  border-top: none;
+  box-shadow: 0 1px 0 0 var(--main-color);
+}
+.form-control:focus ~ .form-label {
+  color: var(--secondary-color) !important;
+}
+
+.css-t3ipsp-control {
+  border-color: var(--main-color) !important;
+  box-shadow: 0 0 0 1px var(--main-color) !important;
+}
+
+.form-check-input[type="checkbox"]:checked {
+  background-image: none;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--main-color);
 }

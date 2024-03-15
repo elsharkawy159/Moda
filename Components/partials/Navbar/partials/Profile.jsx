@@ -6,6 +6,11 @@ const Profile = () => {
   const handleLogOut = () => {
     localStorage.removeItem("userToken");
     localStorage.removeItem("userName");
+    localStorage.removeItem("email");
+    localStorage.removeItem("gender");
+    localStorage.removeItem("role");
+    localStorage.removeItem("credit");
+    localStorage.removeItem("phone");
     window.location.href = "/";
   };
   const userName = JSON.parse(localStorage.getItem("userName"));
@@ -15,11 +20,15 @@ const Profile = () => {
         className="profile nav-link d-sm-flex align-items-sm-center"
         href="/profile"
       >
-        <NavIcon icon={"fa-solid fa-user"} href={"/profile"} title={"Profile"} />
+        <NavIcon
+          icon={"fa-solid fa-user"}
+          href={"/profile"}
+          title={"Profile"}
+        />
         <span className="d-none d-md-flex ms-1 fw-semibold">{userName}</span>
       </Link>
       <span onClick={handleLogOut} className="pointer ms-2">
-        <i class="fa-solid fa-arrow-right-from-bracket text-danger"></i>
+        <i className="fa-solid fa-arrow-right-from-bracket text-danger"></i>
       </span>
     </>
   );

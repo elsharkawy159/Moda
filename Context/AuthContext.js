@@ -24,7 +24,6 @@ export function AuthProvider({ children }) {
     const userToken = localStorage.getItem("userToken");
     if (userToken) {
       setIsLoggedIn(true);
-      
     } else {
       setIsLoggedIn(false);
     }
@@ -56,7 +55,7 @@ export function AuthProvider({ children }) {
       if (data.success) {
         setTimeout(() => {
           window.location.href = "/login";
-        }, 800);
+        }, 5000);
       }
     } catch (error) {
       setSignUpRes(error?.response?.data);
@@ -81,7 +80,7 @@ export function AuthProvider({ children }) {
         localStorage.setItem("gender", JSON.stringify(data.user.gender));
         localStorage.setItem("role", JSON.stringify(data.user.role));
         localStorage.setItem("credit", JSON.stringify(data.user.credit));
-        localStorage.setItem("wishlist", JSON.stringify(data.user.wishlist));
+        localStorage.setItem("phone", JSON.stringify(data.user.phone[0]));
 
         setTimeout(() => {
           window.location.href = "/";

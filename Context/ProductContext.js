@@ -6,7 +6,6 @@ const ProductContext = createContext();
 
 export function useProduct() {
   return useContext(ProductContext);
-  const [isLoading, setIsLoading] = useState(false);
 }
 
 export function ProductProvider({ children }) {
@@ -30,7 +29,7 @@ export function ProductProvider({ children }) {
       // console.log(data);
     } catch (error) {
       setIsLoading(false);
-      return
+      return;
     } finally {
       setTimeout(() => {
         setIsLoading(false);
@@ -51,21 +50,15 @@ export function ProductProvider({ children }) {
     }
   };
 
-  const createProduct = async (productData, images, token) => {
+  const createProduct = async (formData) => {
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      formData.append("mainImage", images.mainImage);
-      images.subImages.forEach((subImage) => {
-        formData.append("subImages", subImage);
-      });
-
+      const token = JSON.parse(localStorage.getItem("userToken"));
       const { data } = await axios.post(`${BaseURL}/product`, formData, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Barer_${token}`,
           "Content-Type": "multipart/form-data",
         },
-        data: productData,
       });
       setCreateProductRes(data);
     } catch (error) {

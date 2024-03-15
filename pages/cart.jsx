@@ -127,10 +127,10 @@ const Cart = () => {
                             >
                               {isLoadingCart ? (
                                 <div
-                                  class="spinner-border text-danger"
+                                  className="spinner-border text-danger"
                                   role="status"
                                 >
-                                  <span class="visually-hidden">
+                                  <span className="visually-hidden">
                                     Loading...
                                   </span>
                                 </div>
@@ -164,9 +164,9 @@ const Cart = () => {
                 </div>
 
                 <div className="col-md-6">
-                  <div class="card mb-4 border shadow-3">
-                    <div class="card-body p-4 d-flex flex-row">
-                      <div class="form-outline flex-fill">
+                  <div className="card mb-4 border shadow-3">
+                    <div className="card-body p-4 d-flex flex-row">
+                      <div className="form-outline flex-fill">
                         <MDBInput
                           className={`form-control form-control-lg ${
                             voucher == "Omar100"
@@ -182,7 +182,7 @@ const Cart = () => {
                       </div>
                       <button
                         type="button"
-                        class={`btn btn-lg ms-3 px-5 ${
+                        className={`btn btn-lg ms-3 px-5 ${
                           discounted ? "btn-success" : "btn-outline-warning"
                         }`}
                         onClick={

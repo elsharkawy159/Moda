@@ -44,15 +44,24 @@ const login = () => {
     },
   });
   console.log(isLoggedIn);
-  const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
-    formik;
+  const {
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    isValid,
+    dirty,
+  } = formik;
 
   return (
     <>
       <PageHeader title={"Sign In"} />
       <div className="container">
-        <div className="row py-5 border-bottom">
-          <div className="col-md-6 m-auto">
+        <div className="row py-5 border-bottom border-bottom">
+          <div className="col-md-6 m-auto p-md-5 bg-light bg-opacity-50 rounded-3 border">
             {signInRes.success ? (
               <p className="text-center text-success fw-bold">
                 {signInRes.message} ✅
@@ -66,7 +75,7 @@ const login = () => {
             )}
             <form onSubmit={handleSubmit}>
               <MDBInput
-                className="mt-4 mb-2"
+                className="mt-4"
                 type="email"
                 id="email"
                 name="email"
@@ -76,10 +85,13 @@ const login = () => {
                 onBlur={handleBlur}
               />
               {touched.email && errors.email && (
-                <span className="text-danger text-center">{errors.email}</span>
+                <span className="text-danger text-center text-sm">
+                  {errors.email}
+                </span>
               )}
+
               <MDBInput
-                className="mb-2 mt-4"
+                className="mt-4"
                 type="password"
                 id="password"
                 name="password"
@@ -89,12 +101,12 @@ const login = () => {
                 onInput={handleBlur}
               />
               {touched.password && errors.password && (
-                <span className="text-danger text-center">
+                <span className="text-danger text-center text-sm">
                   {errors.password}
                 </span>
               )}
 
-              <MDBRow className="mb-4">
+              <MDBRow className="my-4">
                 <MDBCol className="d-flex justify-content-center">
                   <MDBCheckbox
                     id="remember"
@@ -111,6 +123,7 @@ const login = () => {
               <button
                 type="submit"
                 className="mb-4 btn btn-moda d-flex m-auto px-5"
+                disabled={isSubmitting || !isValid || !dirty}
               >
                 {isLoading ? "Signing in..." : "Sign in"}
               </button>

@@ -1,21 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useAuth } from "../Context/AuthContext.js";
-import {
-  MDBRow,
-  MDBCol,
-  MDBInput,
-  MDBCheckbox,
-  MDBBtn,
-  MDBIcon,
-  MDBRadio,
-} from "mdb-react-ui-kit";
+import { MDBInput, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 import Link from "next/link.js";
+import Select from "react-select";
 import PageHeader from "../Components/partials/PageHeader.jsx";
 
-const login = () => {
+const Login = () => {
   const { signUp, signUpRes, isLoading } = useAuth();
+  const [gender, setGender] = useState("");
+  const [countdown, setCountdown] = useState(5);
+  const genders = [
+    { value: "male", label: "Male" },
+    { value: "female", label: "Female" },
+  ];
+
+  useEffect(() => {
+    // Countdown timer
+    if (signUpRes.success) {
+      const countdownInterval = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+
+      // Clear interval when countdown reaches 0
+      if (countdown === 0) {
+        clearInterval(countdownInterval);
+      }
+
+      // Cleanup function
+      return () => clearInterval(countdownInterval);
+    }
+  }, [signUpRes.success, countdown]);
+
+  const handleRegister = async (values, { resetForm }) => {
+    values.gender = gender;
+    values.phone = values.phone.split(",").map((phone) => phone.trim());
+    console.log(values);
+    await signUp(values);
+    resetForm();
+    setCountdown(5);
+  };
+
+  const validationSchema = yup.object({
+    userName: yup.string().min(5).required("User Name is required"),
+    email: yup
+      .string()
+      .email("Invalid Email Address")
+      .required("Email Address is Required"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Minimum password length is 8 characters")
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+        "Password should contain: Number, Lowercase, and Uppercase Letters"
+      ),
+    cPassword: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Confirm Password is required"),
+    phone: yup.string().required("Phone number is required"),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -26,48 +72,34 @@ const login = () => {
       phone: "",
       gender: "",
     },
-    validationSchema: yup.object({
-      userName: yup.string().min(5).required("userName is required"),
-      email: yup
-        .string()
-        .email("Invalid Email Address")
-        .required("Email Address is Required"),
-      password: yup
-        .string()
-        .required("Password is required")
-        .min(8, "Minimum password length is 8 characters")
-        .matches(
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-          "Password should contain: Number, Lowercase, and Uppercase Letters"
-        ),
-      cPassword: yup
-        .string()
-        .oneOf([yup.ref("password"), null], "Passwords must match"),
-      phone: yup.string().required("Phone number is required"),
-    }),
-    onSubmit: async (values) => {
-      try {
-        await signUp(values);
-      } catch (error) {
-        console.error("Sign up error:", error.message);
-      }
-    },
+    validationSchema: validationSchema,
+    onSubmit: handleRegister,
   });
 
-  const { handleBlur, handleChange, handleSubmit, values, errors, touched } =
-    formik;
+  const {
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    isValid,
+    dirty,
+  } = formik;
 
   return (
     <>
       <PageHeader title={"Register"} />
       <div className="container">
         <div className="row py-5 border-bottom">
-          <div className="col-md-6 m-auto">
+          <div className="col-md-6 m-auto  p-md-5 bg-light bg-opacity-50 rounded-3 border">
             {signUpRes.success ? (
               <p className="text-center text-success fw-bold">
                 {signUpRes.message} ✅
                 <br />
-                Directing to Login...
+                Directing to Login Page in{" "}
+                <span className="text-danger fw-bold">{countdown}</span> Seconds
               </p>
             ) : (
               <p className="text-center text-danger fw-bold">
@@ -76,22 +108,21 @@ const login = () => {
             )}
             <form onSubmit={handleSubmit}>
               <MDBInput
-                className="mt-4 mb-2"
                 type="text"
                 id="userName"
                 name="userName"
-                label="userName"
+                label="User Name"
                 value={values.userName}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               {touched.userName && errors.userName && (
-                <span className="text-danger text-center">
+                <span className="text-danger text-center text-sm">
                   {errors.userName}
                 </span>
               )}
               <MDBInput
-                className="mt-4 mb-2"
+                className="mt-4"
                 type="email"
                 id="email"
                 name="email"
@@ -101,10 +132,12 @@ const login = () => {
                 onBlur={handleBlur}
               />
               {touched.email && errors.email && (
-                <span className="text-danger text-center">{errors.email}</span>
+                <span className="text-danger text-center text-sm">
+                  {errors.email}
+                </span>
               )}
               <MDBInput
-                className="mb-2 mt-4"
+                className="mt-4"
                 type="password"
                 id="password"
                 name="password"
@@ -114,13 +147,13 @@ const login = () => {
                 onBlur={handleBlur}
               />
               {touched.password && errors.password && (
-                <span className="text-danger text-center">
+                <span className="text-danger text-center text-sm">
                   {errors.password}
                 </span>
               )}
               <MDBInput
-                className="mb-2 mt-4"
-                type="cPassword"
+                className="mt-4"
+                type="password"
                 id="cPassword"
                 name="cPassword"
                 label="Confirm Password"
@@ -129,39 +162,44 @@ const login = () => {
                 onBlur={handleBlur}
               />
               {touched.cPassword && errors.cPassword && (
-                <span className="text-danger text-center">
+                <span className="text-danger text-center text-sm">
                   {errors.cPassword}
                 </span>
               )}
               <MDBInput
-                className="mb-2 mt-4"
+                className="mt-4"
                 type="tel"
                 id="phone"
                 name="phone"
-                label="phone"
+                label="Phone"
                 value={values.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               {touched.phone && errors.phone && (
-                <span className="text-danger text-center">{errors.phone}</span>
+                <span className="text-danger text-center text-sm">
+                  {errors.phone}
+                </span>
               )}
-              <div className="d-flex justify-content-evenly">
-                <span>Gender</span>
-                <MDBRadio
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                  label="Male"
+              <div className="mt-4">
+                <Select
+                  value={genders.find((g) => g.value === gender)}
+                  onChange={(selectedOption) => setGender(selectedOption.value)}
+                  options={genders}
+                  placeholder="Gender"
+                  name="gender"
+                  isSearchable={false}
                 />
-                <MDBRadio
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  label="Female"
-                />
+                {!gender && touched.gender && (
+                  <span className="text-danger text-center text-sm">
+                    Gender is required
+                  </span>
+                )}
               </div>
               <button
                 type="submit"
                 className="mb-4 btn btn-moda d-flex m-auto px-5 mt-4"
+                disabled={isSubmitting || !isValid || !dirty}
               >
                 {isLoading ? "Signing Up..." : "Sign Up"}
               </button>
@@ -196,4 +234,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

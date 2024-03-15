@@ -13,9 +13,10 @@ import { Router } from "next/router.js";
 import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "@/styles/globals.css";
 import "@/styles/mediaQuery.css";
 import "../public/Components.style/style.css";
+import "react-image-crop/dist/ReactCrop.css";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(false);

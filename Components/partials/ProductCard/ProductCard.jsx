@@ -79,7 +79,7 @@ const ProductCard = ({
                 {product.top ? "TOP" : ""}
               </span>
             )}
-            {product.top && (
+            {product.new && (
               <span className="product-new-label">
                 {product.new ? "NEW" : ""}
               </span>
@@ -136,7 +136,10 @@ const ProductCard = ({
                   ADD TO CART
                 </span>
               ) : (
-                <Link href={"/login"} className="add-to-cart pointer">
+                <Link
+                  href={"/login"}
+                  className="add-to-cart pointer text-light bg-dark bg-opacity-75"
+                >
                   <i className="fa fa-shopping-bag"></i>
                   ADD TO CART
                 </Link>
