@@ -52,7 +52,7 @@ const contact = () => {
                 </label>
               </div>
 
-              <button type="button" className="btn btn-primary btn-block mb-4">
+              <button type="button" className="btn btn-moda btn-block mb-4">
                 Send
               </button>
             </form>
