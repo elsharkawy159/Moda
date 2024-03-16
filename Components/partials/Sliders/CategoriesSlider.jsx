@@ -65,7 +65,7 @@ const CategoriesSlider = () => {
                 />
                 <div className="layer"></div>
                 <Link href={"/shop"}>
-                  <button className="btn btn-moda text-uppercase fw-normal p-3 px-4">
+                  <button className="btn btn-moda position-absolute top-50 start-50 translate-middle text-uppercase fw-normal p-3 px-4">
                     {category.name}
                   </button>
                 </Link>
