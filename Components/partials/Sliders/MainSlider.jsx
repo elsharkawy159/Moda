@@ -1,3 +1,4 @@
+import Link from "next/link.js";
 import React from "react";
 import Slider from "react-slick";
 
@@ -35,9 +36,11 @@ const MainSlider = () => {
           <div className="slider-content text-center">
             <p className="text-gradient">NEW COLLECTION</p>
             <h1>Men's Coats & Jackets</h1>
-            <button className="btn btn-moda fs-6 m-0 fw-bold">
-              Discover Now
-            </button>
+            <Link href={"/shop"}>
+              <button className="btn btn-moda fs-6 m-0 fw-bold">
+                Discover Now
+              </button>
+            </Link>
           </div>
         </div>
         <div className="position-relative">
@@ -51,7 +54,11 @@ const MainSlider = () => {
             <h1>
               Men's & Women's <span className="d-block">T-Shirts</span>
             </h1>
-            <button className="btn btn-moda fs-6 m-0">Discover Now</button>
+            <Link href={"/shop"}>
+              <button className="btn btn-moda fs-6 m-0 fw-bold">
+                Discover Now
+              </button>
+            </Link>{" "}
           </div>
         </div>
         <div className="position-relative">
@@ -63,7 +70,11 @@ const MainSlider = () => {
           <div className="slider-content text-center">
             <p className="text-gradient">DEALS AND PROMOTIONS</p>
             <h1>Sneakers & Athletic Shoes</h1>
-            <button className="btn btn-moda fs-6 m-0">Discover Now</button>
+            <Link href={"/shop"}>
+              <button className="btn btn-moda fs-6 m-0 fw-bold">
+                Discover Now
+              </button>
+            </Link>{" "}
           </div>
         </div>
       </Slider>
