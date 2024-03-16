@@ -231,3 +231,7 @@ a:hover i::after {
   background-color: var(--secondary-color);
   border: 1px solid var(--main-color);
 }
+
+.accordion-button:not(.collapsed) {
+  color: var(--main-color);
+}
