@@ -50,12 +50,13 @@ export function AuthProvider({ children }) {
     try {
       setIsLoading(true);
       const { data } = await axios.post(`${BaseURL}/auth/signup`, userData);
-      setSignUpRes(data);
-      console.log(data);
       if (data.success) {
+        setSignUpRes(data);
         setTimeout(() => {
           window.location.href = "/login";
         }, 5000);
+      } else {
+        setSignUpRes(data.validationErr[0]);
       }
     } catch (error) {
       setSignUpRes(error?.response?.data);
