@@ -82,6 +82,7 @@ const login = () => {
                 label="Email address"
                 value={values.email}
                 onChange={handleChange}
+                autoComplete="off"
                 onBlur={handleBlur}
               />
               {touched.email && errors.email && (

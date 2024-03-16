@@ -60,23 +60,24 @@ const Cart = () => {
                               </Link>
                             </h6>
                             <div className="col-md-3 col-lg-3 d-flex">
-                              <button
-                                className="btn btn-link px-2"
-                                disabled={product.quantity === 1}
-                                onClick={() =>
-                                  addToCart(
-                                    {
-                                      productId: product.productId._id,
-                                      quantity: product.quantity - 1,
-                                    },
-                                    JSON.parse(
-                                      localStorage.getItem("userToken")
+                              {product.quantity > 1 && (
+                                <button
+                                  className="btn btn-link px-2"
+                                  onClick={() =>
+                                    addToCart(
+                                      {
+                                        productId: product.productId._id,
+                                        quantity: product.quantity - 1,
+                                      },
+                                      JSON.parse(
+                                        localStorage.getItem("userToken")
+                                      )
                                     )
-                                  )
-                                }
-                              >
-                                <i className="fas fa-minus"></i>
-                              </button>
+                                  }
+                                >
+                                  <i className="fas fa-minus"></i>
+                                </button>
+                              )}
 
                               <input
                                 id="form1"
@@ -164,8 +165,8 @@ const Cart = () => {
                 </div>
 
                 <div className="col-md-6">
-                  <div className="card mb-4 border shadow-3">
-                    <div className="card-body p-4 d-flex flex-row">
+                  <div className="card mb-4 border shadow-3 p-4">
+                    <div className="card-body d-flex flex-row p-0">
                       <div className="form-outline flex-fill">
                         <MDBInput
                           className={`form-control form-control-lg ${
@@ -180,26 +181,32 @@ const Cart = () => {
                           onChange={(e) => setVoucher(e.target.value)}
                         />
                       </div>
-                      <button
-                        type="button"
-                        className={`btn btn-lg ms-3 px-5 ${
-                          discounted ? "btn-success" : "btn-outline-warning"
-                        }`}
-                        onClick={
-                          voucher === "Omar100"
-                            ? () => setDiscounted(true)
-                            : null
-                        }
-                      >
-                        {discounted ? "Applied" : "Apply"}
-                      </button>
+                      {discounted ? (
+                        <button
+                          type="button"
+                          className={`btn btn-lg ms-3  px-5  btn-danger`}
+                          onClick={() => setDiscounted(false)}
+                        >
+                          Cancel
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className={`btn btn-lg ms-3  px-5 btn-outline-warning`}
+                          onClick={
+                            voucher === "Omar100"
+                              ? () => setDiscounted(true)
+                              : null
+                          }
+                        >
+                          Apply
+                        </button>
+                      )}
                     </div>
+
                     {discounted && (
-                      <p
-                        className="text-danger ms-5 pointer w-fit"
-                        onClick={() => setDiscounted(false)}
-                      >
-                        Cancel Discount
+                      <p className="text-success fw-bold mt-3 mb-0 w-fit text-sm">
+                        Discount Applied Successfully
                       </p>
                     )}
                   </div>

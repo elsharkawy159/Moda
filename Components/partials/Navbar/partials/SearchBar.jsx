@@ -7,7 +7,7 @@ const SearchBar = () => {
         autoComplete="off"
         type="search"
         className="search form-control rounded px-3"
-        placeholder="Search"
+        placeholder="Search - Soon"
         onInput={(e) => console.log(e.target.value)}
       />
       <span className="input-group-text border-0 d-lg-flex">

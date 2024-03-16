@@ -42,6 +42,7 @@ const Seller = () => {
       .min(0, "Discount must be at least 0")
       .max(100, "Maximum discount is 100"),
     mainImage: Yup.mixed().required("Main image is required"),
+
     // subImages: Yup.array()
     //   .min(1, "At least one sub image is required")
     //   .max(5, "Maximum Sub images are 5"),
@@ -208,6 +209,7 @@ const Seller = () => {
                   id="name"
                   as={MDBInput}
                   label="Product Name"
+                  autoComplete="off"
                 />
 
                 <ErrorMessage
@@ -238,6 +240,7 @@ const Seller = () => {
                   id="description"
                   rows={4}
                   label="Description"
+                  autoComplete="off"
                 />
                 <ErrorMessage
                   name="description"
@@ -385,6 +388,7 @@ const Seller = () => {
                     id="price"
                     as={MDBInput}
                     label="Price (EGP)"
+                    autoComplete="off"
                     onChange={(e) => {
                       formik.handleChange(e); // Handle Formik's handleChange event
                       handlePrice({
@@ -407,6 +411,7 @@ const Seller = () => {
                     max={100}
                     id="discount"
                     as={MDBInput}
+                    autoComplete="off"
                     label="Discount %"
                     onChange={(e) => {
                       formik.handleChange(e); // Handle Formik's handleChange event

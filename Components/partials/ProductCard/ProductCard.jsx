@@ -15,6 +15,8 @@ const ProductCard = ({
     }
   };
 
+
+
   return (
     <>
       {!product || isLoading ? (

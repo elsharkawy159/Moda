@@ -60,7 +60,13 @@ const Login = () => {
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match")
       .required("Confirm Password is required"),
-    phone: yup.string().required("Phone number is required"),
+    phone: yup
+      .string()
+      .matches(/^(002|\+2)?01[0125][0-9]{8}$/, {
+        message: "Invalid phone number",
+        excludeEmptyString: true,
+      })
+      .required("Phone field is required"),
   });
 
   const formik = useFormik({
@@ -114,6 +120,7 @@ const Login = () => {
                 label="User Name"
                 value={values.userName}
                 onChange={handleChange}
+                autoComplete="off"
                 onBlur={handleBlur}
               />
               {touched.userName && errors.userName && (
@@ -129,6 +136,7 @@ const Login = () => {
                 label="Email address"
                 value={values.email}
                 onChange={handleChange}
+                autoComplete="off"
                 onBlur={handleBlur}
               />
               {touched.email && errors.email && (
@@ -174,6 +182,7 @@ const Login = () => {
                 label="Phone"
                 value={values.phone}
                 onChange={handleChange}
+                autoComplete="off"
                 onBlur={handleBlur}
               />
               {touched.phone && errors.phone && (

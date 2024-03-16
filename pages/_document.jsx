@@ -27,11 +27,10 @@ export default function Document() {
           crossorigin="anonymous"
         />
         <link rel="stylesheet" href="/css/mdb.min.css" />
-
       </Head>
       <body>
-        <script src="/js/mdb.min.js"/>
-        <script src="/js/bootstrap.min.js"/>
+        <script src="/js/mdb.min.js" />
+        <script src="/js/bootstrap.min.js" />
         <Main />
         <NextScript />
       </body>

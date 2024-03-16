@@ -7,8 +7,8 @@ const wishlist = () => {
     <>
       <PageHeader title={"my wishlist"} />
       <div className="container">
-        <div className="row py-5">
-
+        <div className="row py-5 justify-content-center">
+          <h1 className="text-main text-center">SOON</h1>
         </div>
       </div>
     </>

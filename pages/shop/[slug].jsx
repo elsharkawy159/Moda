@@ -4,13 +4,19 @@ import { useProduct } from "../../Context/ProductContext";
 import Slider from "react-slick";
 import Link from "next/link.js";
 import formatKey from "../../Components/features/Formatting.jsx";
+import Select from "react-select";
+import { useAuth } from "../../Context/AuthContext.js";
+import { useCart } from "../../Context/CartContext.js";
 
 const Product = () => {
   const { getProductDetails, productDetailsData } = useProduct();
   const [urlCopied, setUrlCopied] = useState(false);
-
+  const [size, setSize] = useState("false");
+  const { isLoggedIn } = useAuth();
+  const { addToCart } = useCart();
   const router = useRouter();
   const { slug } = router.query;
+  const { product } = productDetailsData;
 
   useEffect(() => {
     if (slug) {
@@ -18,8 +24,22 @@ const Product = () => {
     }
   }, [slug]);
 
-  const { product } = productDetailsData;
-  // console.log(product);
+  const handleAddCart = (id) => {
+    if (isLoggedIn) {
+      const token = JSON.parse(localStorage.getItem("userToken"));
+      addToCart({ productId: id, quantity: 1 }, token);
+    }
+  };
+
+  const sizeOptions = [
+    { value: "s", label: "Small" },
+    { value: "m", label: "Medium" },
+    { value: "l", label: "Large" },
+    { value: "lg", label: "Large" },
+    { value: "xl", label: "Extra Large" },
+    { value: "xxl", label: "XXL" },
+    { value: "xxxl", label: "XXXL" },
+  ];
 
   const settings = {
     dots: false,
@@ -142,14 +162,16 @@ const Product = () => {
                 </p>
               </div>
               <p className="fw-semibold">{product?.description}</p>
-              <div className="d-flex align-items-center col-md-5 fw-semibold my-2">
+              <div className="d-flex align-items-center fw-semibold my-2">
                 Size:
-                <select className="form-select mx-2 text-sm">
-                  <option selected>Size</option>
-                  {product?.size?.map((size) => {
-                    return <option value={size}>{size.toUpperCase()}</option>;
-                  })}
-                </select>
+                <Select
+                  value={size}
+                  className="ms-2"
+                  onChange={setSize}
+                  options={sizeOptions}
+                  placeholder="size"
+                  name="size"
+                />
               </div>
               <div className="d-flex align-items-center col-md-5 fw-semibold my-2">
                 Quantity:
@@ -172,7 +194,12 @@ const Product = () => {
                   );
                 })}
               </div>
-              <button className="btn btn-moda col-md-5 my-3">
+              <button
+                className="btn btn-moda col-md-5 my-3"
+                onClick={() => {
+                  handleAddCart(product._id);
+                }}
+              >
                 Add To Cart <i className="fa fa-cart-plus"></i>
               </button>
 
